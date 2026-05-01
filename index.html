@@ -3,113 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>חדר הסגלגל – ציר זמן אינטראקטיבי</title>
+<title>חדר הסגלגל – מוזיאון דיגיטלי</title>
 
 <style>
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  font-family: Arial;
-  background: #0f172a;
-  color: white;
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0f172a;
+  color:#f8fafc;
+  line-height:1.8;
 }
 
 /* HEADER */
-header {
-  height: 60vh;
+header{
+  height:70vh;
   background:
-    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),
-    url("images/oval-office-front-view.png") center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
+  url("images/oval-office-front-view.png") center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-header h1 { font-size: 60px; }
+header h1{
+  font-size:64px;
+}
 
 /* NAV */
-nav {
-  position: sticky;
-  top: 0;
-  background: #020617;
-  display: flex;
-  gap: 10px;
-  padding: 12px;
-  overflow-x: auto;
+nav{
+  position:sticky;
+  top:0;
+  background:#020617;
+  padding:12px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  z-index:1000;
 }
 
-nav a {
-  background: #1e293b;
-  padding: 10px 18px;
-  border-radius: 999px;
-  text-decoration: none;
-  color: white;
+nav a{
+  background:#1e293b;
+  color:#e0f2fe;
+  padding:10px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  white-space:nowrap;
+  font-weight:bold;
 }
 
-nav a:hover { background: #38bdf8; color: black; }
-
-/* CONTENT */
-main { padding: 20px; max-width: 1000px; margin: auto; }
-
-section {
-  background: #111827;
-  padding: 25px;
-  border-radius: 20px;
-  margin-bottom: 40px;
+nav a:hover{
+  background:#38bdf8;
+  color:#000;
 }
 
-h2 { color: #38bdf8; }
+/* MAIN */
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+section{
+  background:#111827;
+  padding:30px;
+  border-radius:20px;
+  margin-bottom:50px;
+}
+
+h2{ color:#38bdf8; }
+
+img{
+  width:100%;
+  border-radius:15px;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#1e293b;
+  padding:15px;
+  border-radius:15px;
+}
 
 /* TIMELINE */
-.timeline {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 20px 0;
+.timeline{
+  display:flex;
+  overflow-x:auto;
+  gap:12px;
+  padding:15px 0;
 }
 
-.timeline-item {
-  min-width: 120px;
-  padding: 10px;
-  background: #1e293b;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
+.timeline-item{
+  min-width:120px;
+  padding:10px;
+  background:#1e293b;
+  border-radius:10px;
+  text-align:center;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.timeline-item.active {
-  background: #38bdf8;
-  color: black;
+.timeline-item.active{
+  background:#38bdf8;
+  color:black;
 }
 
-.timeline-content {
-  margin-top: 20px;
-  padding: 20px;
-  background: #020617;
-  border-radius: 15px;
+.timeline-content{
+  margin-top:20px;
+  background:#020617;
+  padding:20px;
+  border-radius:15px;
+  min-height:120px;
 }
 
-img {
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 15px;
-  cursor: pointer;
+/* PROFILE */
+.profile{
+  width:200px;
+  border-radius:50%;
+  display:block;
+  margin:auto;
 }
 
 /* LIGHTBOX */
-#lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.9);
-  justify-content: center;
-  align-items: center;
+#lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
 }
 
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
 }
 
 </style>
@@ -118,45 +156,131 @@ img {
 <body>
 
 <header>
-  <h1>חדר הסגלגל</h1>
+<h1>חדר הסגלגל</h1>
 </header>
 
 <nav>
-  <a href="#home">ראשי</a>
-  <a href="#timeline">ציר זמן</a>
+<a href="#home">ראשי</a>
+<a href="#etymology">אטימולוגיה</a>
+<a href="#planning">תכנון</a>
+<a href="#dimensions">מידות</a>
+<a href="#furniture">ריהוט</a>
+<a href="#decorations">אמנות</a>
+<a href="#timeline">ציר זמן</a>
+<a href="#about">אודות</a>
 </nav>
 
 <main>
 
+<!-- HOME -->
 <section id="home">
 <h2>מבוא</h2>
 <p>
-חדר הסגלגל הוא אחד הסמלים הפוליטיים החשובים בעולם.
+חדר הסגלגל הוא מרכז קבלת ההחלטות של נשיא ארצות הברית,
+וסמל עולמי של הנהגה, דיפלומטיה וכוח פוליטי.
 </p>
 <img src="images/oval-office-front-view.png" onclick="openImg(this)">
 </section>
 
+<!-- ETYMOLOGY -->
+<section id="etymology">
+<h2>אטימולוגיה</h2>
+<p>
+Oval = אליפסה (מלטינית ovum = ביצה).  
+Office = משרד רשמי.  
+כלומר: "המשרד האליפטי".
+</p>
+</section>
+
+<!-- PLANNING -->
+<section id="planning">
+<h2>תכנון ובנייה</h2>
+<p>
+1909 – טאפט בונה את החדר הראשון.  
+1934 – רוזוולט מעביר למיקום הנוכחי.  
+</p>
+</section>
+
+<!-- DIMENSIONS -->
+<section id="dimensions">
+<h2>מידות</h2>
+<ul>
+<li>אורך: 10.9 מטר</li>
+<li>רוחב: 8.8 מטר</li>
+<li>גובה: 5.6 מטר</li>
+</ul>
+</section>
+
+<!-- FURNITURE -->
+<section id="furniture">
+<h2>ריהוט</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Resolute Desk</h3>
+<p>שולחן נשיאותי מפורסם שנבנה מעץ ספינה בריטית.</p>
+<img src="images/resolute-desk-front-view.png" onclick="openImg(this)">
+</div>
+
+<div class="card">
+<h3>אזור ישיבה</h3>
+<p>משמש לפגישות ודיפלומטיה.</p>
+<img src="images/oval-office-front-view.png" onclick="openImg(this)">
+</div>
+</div>
+
+</section>
+
+<!-- DECORATIONS -->
+<section id="decorations">
+<h2>אמנות</h2>
+
+<div class="grid">
+<div class="card">
+<h3>שטיח</h3>
+<img src="images/oval-office-presidential-seal-carpet.png" onclick="openImg(this)">
+</div>
+
+<div class="card">
+<h3>Broncho Buster</h3>
+<img src="images/the-broncho-buster-remington-met-1895.jpg" onclick="openImg(this)">
+</div>
+
+<div class="card">
+<h3>צ׳רצ׳יל</h3>
+<img src="images/winston-churchill-bust-epstein.png" onclick="openImg(this)">
+</div>
+</div>
+
+</section>
+
+<!-- TIMELINE -->
 <section id="timeline">
 <h2>ציר זמן אינטראקטיבי</h2>
 
 <div class="timeline">
-
 <div class="timeline-item active" onclick="showEvent(0)">1909</div>
 <div class="timeline-item" onclick="showEvent(1)">1934</div>
 <div class="timeline-item" onclick="showEvent(2)">1962</div>
 <div class="timeline-item" onclick="showEvent(3)">1969</div>
 <div class="timeline-item" onclick="showEvent(4)">1974</div>
 <div class="timeline-item" onclick="showEvent(5)">2001</div>
-
 </div>
 
-<div id="timeline-content" class="timeline-content">
-</div>
+<div id="timelineContent" class="timeline-content"></div>
 
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>אודות</h2>
+<img src="images/ram-profile.jpg" class="profile" onclick="openImg(this)">
+<p>אתר היסטורי על חדר הסגלגל.</p>
 </section>
 
 </main>
 
+<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeImg()">
 <img id="lightbox-img">
 </div>
@@ -164,42 +288,22 @@ img {
 <script>
 
 const events = [
-{
-title: "1909 – הקמת החדר",
-text: "החדר נבנה לראשונה בתקופת הנשיא טאפט כחלק מהאגף המערבי."
-},
-{
-title: "1934 – מיקום חדש",
-text: "רוזוולט מעביר את החדר למיקומו הנוכחי."
-},
-{
-title: "1962 – משבר קובה",
-text: "החלטות גורליות התקבלו כאן במהלך המשבר הגרעיני."
-},
-{
-title: "1969 – נחיתה על הירח",
-text: "ניקסון מדבר עם האסטרונאוטים."
-},
-{
-title: "1974 – התפטרות ניקסון",
-text: "אירוע דרמטי בהיסטוריה האמריקאית."
-},
-{
-title: "2001 – פיגועי 11 בספטמבר",
-text: "החדר הפך למוקד קבלת החלטות בזמן חירום."
-}
+["1909","הקמת החדר ע\"י טאפט"],
+["1934","מעבר למיקום הנוכחי"],
+["1962","משבר הטילים בקובה"],
+["1969","שיחה עם אסטרונאוטים"],
+["1974","התפטרות ניקסון"],
+["2001","אירועי 11 בספטמבר"]
 ];
 
-function showEvent(index) {
+function showEvent(i){
+document.querySelectorAll(".timeline-item").forEach(el=>el.classList.remove("active"));
+document.querySelectorAll(".timeline-item")[i].classList.add("active");
 
-document.querySelectorAll(".timeline-item").forEach(el => el.classList.remove("active"));
-document.querySelectorAll(".timeline-item")[index].classList.add("active");
-
-document.getElementById("timeline-content").innerHTML =
-"<h3>" + events[index].title + "</h3><p>" + events[index].text + "</p>";
+document.getElementById("timelineContent").innerHTML =
+"<h3>"+events[i][0]+"</h3><p>"+events[i][1]+"</p>";
 }
 
-// INIT
 showEvent(0);
 
 function openImg(img){
