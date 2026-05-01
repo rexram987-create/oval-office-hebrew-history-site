@@ -3,110 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>חדר הסגלגל – אתר היסטורי</title>
+<title>חדר הסגלגל – ציר זמן אינטראקטיבי</title>
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #0f172a;
-  color: #f8fafc;
-  line-height: 1.8;
+  color: white;
 }
 
+/* HEADER */
 header {
-  height: 70vh;
+  height: 60vh;
   background:
     linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),
     url("images/oval-office-front-view.png") center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
-header h1 {
-  font-size: 64px;
-}
+header h1 { font-size: 60px; }
 
+/* NAV */
 nav {
   position: sticky;
   top: 0;
   background: #020617;
-  padding: 12px;
   display: flex;
   gap: 10px;
+  padding: 12px;
   overflow-x: auto;
-  border-bottom: 1px solid #334155;
 }
 
 nav a {
   background: #1e293b;
-  color: #e0f2fe;
   padding: 10px 18px;
   border-radius: 999px;
   text-decoration: none;
-  white-space: nowrap;
+  color: white;
 }
 
-nav a:hover {
-  background: #38bdf8;
-  color: #000;
-}
+nav a:hover { background: #38bdf8; color: black; }
 
-main {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
+/* CONTENT */
+main { padding: 20px; max-width: 1000px; margin: auto; }
 
 section {
-  margin-bottom: 60px;
-  padding: 30px;
   background: #111827;
+  padding: 25px;
   border-radius: 20px;
+  margin-bottom: 40px;
 }
 
-h2 {
-  color: #38bdf8;
+h2 { color: #38bdf8; }
+
+/* TIMELINE */
+.timeline {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 20px 0;
+}
+
+.timeline-item {
+  min-width: 120px;
+  padding: 10px;
+  background: #1e293b;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.timeline-item.active {
+  background: #38bdf8;
+  color: black;
+}
+
+.timeline-content {
+  margin-top: 20px;
+  padding: 20px;
+  background: #020617;
+  border-radius: 15px;
 }
 
 img {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 10px;
   margin-top: 15px;
   cursor: pointer;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
-}
-
-.card {
-  background: #1e293b;
-  padding: 15px;
-  border-radius: 16px;
-}
-
-.profile {
-  width: 200px;
-  border-radius: 50%;
-  display: block;
-  margin: auto;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #020617;
-}
-
+/* LIGHTBOX */
 #lightbox {
   display: none;
   position: fixed;
@@ -132,142 +123,94 @@ footer {
 
 <nav>
   <a href="#home">ראשי</a>
-  <a href="#etymology">אטימולוגיה</a>
-  <a href="#planning">תכנון</a>
-  <a href="#dimensions">מידות</a>
-  <a href="#furniture">ריהוט</a>
-  <a href="#decorations">אמנות</a>
   <a href="#timeline">ציר זמן</a>
-  <a href="#about">אודות</a>
 </nav>
 
 <main>
 
 <section id="home">
 <h2>מבוא</h2>
-
 <p>
-חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית,
-ואחד החדרים הפוליטיים המפורסמים בעולם.
-זהו לא רק משרד — אלא סמל עולמי של כוח, הנהגה ודיפלומטיה.
+חדר הסגלגל הוא אחד הסמלים הפוליטיים החשובים בעולם.
 </p>
-
 <img src="images/oval-office-front-view.png" onclick="openImg(this)">
-</section>
-
-<section id="etymology">
-<h2>אטימולוגיה</h2>
-
-<p>
-השם Oval Office מגיע מהמילה הלטינית ovum (ביצה),
-ומשמעותו "המשרד האליפטי".
-</p>
-</section>
-
-<section id="planning">
-<h2>תכנון ובנייה</h2>
-
-<p>
-החדר נבנה לראשונה בשנת 1909 בתקופת טאפט,
-ועבר למיקומו הנוכחי בשנת 1934 בתקופת רוזוולט.
-</p>
-</section>
-
-<section id="dimensions">
-<h2>מידות</h2>
-
-<ul>
-<li>אורך: 10.9 מטר</li>
-<li>רוחב: 8.8 מטר</li>
-<li>גובה: 5.6 מטר</li>
-</ul>
-</section>
-
-<section id="furniture">
-<h2>ריהוט</h2>
-
-<div class="grid">
-<div class="card">
-<h3>שולחן Resolute</h3>
-<p>נבנה מעץ ספינה בריטית בשנת 1880.</p>
-<img src="images/resolute-desk-front-view.png" onclick="openImg(this)">
-</div>
-
-<div class="card">
-<h3>אזור ישיבה</h3>
-<p>משמש לפגישות ודיפלומטיה.</p>
-<img src="images/oval-office-front-view.png" onclick="openImg(this)">
-</div>
-</div>
-
-</section>
-
-<section id="decorations">
-<h2>אמנות וקישוטים</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>השטיח</h3>
-<img src="images/oval-office-presidential-seal-carpet.png" onclick="openImg(this)">
-</div>
-
-<div class="card">
-<h3>The Broncho Buster</h3>
-<img src="images/the-broncho-buster-remington-met-1895.jpg" onclick="openImg(this)">
-</div>
-
-<div class="card">
-<h3>צ׳רצ׳יל</h3>
-<img src="images/winston-churchill-bust-epstein.png" onclick="openImg(this)">
-</div>
-
-</div>
-
 </section>
 
 <section id="timeline">
-<h2>ציר זמן</h2>
+<h2>ציר זמן אינטראקטיבי</h2>
 
-<ul>
-<li>1909 – נבנה החדר</li>
-<li>1934 – עבר למיקום הנוכחי</li>
-<li>1962 – משבר קובה</li>
-<li>2001 – 11 בספטמבר</li>
-</ul>
+<div class="timeline">
 
-</section>
+<div class="timeline-item active" onclick="showEvent(0)">1909</div>
+<div class="timeline-item" onclick="showEvent(1)">1934</div>
+<div class="timeline-item" onclick="showEvent(2)">1962</div>
+<div class="timeline-item" onclick="showEvent(3)">1969</div>
+<div class="timeline-item" onclick="showEvent(4)">1974</div>
+<div class="timeline-item" onclick="showEvent(5)">2001</div>
 
-<section id="about">
-<h2>אודות</h2>
+</div>
 
-<img src="images/ram-profile.jpg" class="profile" onclick="openImg(this)">
-
-<p>
-אתר זה נבנה כמוזיאון דיגיטלי על חדר הסגלגל.
-</p>
+<div id="timeline-content" class="timeline-content">
+</div>
 
 </section>
 
 </main>
-
-<footer>
-חדר הסגלגל – אתר היסטורי
-</footer>
 
 <div id="lightbox" onclick="closeImg()">
 <img id="lightbox-img">
 </div>
 
 <script>
+
+const events = [
+{
+title: "1909 – הקמת החדר",
+text: "החדר נבנה לראשונה בתקופת הנשיא טאפט כחלק מהאגף המערבי."
+},
+{
+title: "1934 – מיקום חדש",
+text: "רוזוולט מעביר את החדר למיקומו הנוכחי."
+},
+{
+title: "1962 – משבר קובה",
+text: "החלטות גורליות התקבלו כאן במהלך המשבר הגרעיני."
+},
+{
+title: "1969 – נחיתה על הירח",
+text: "ניקסון מדבר עם האסטרונאוטים."
+},
+{
+title: "1974 – התפטרות ניקסון",
+text: "אירוע דרמטי בהיסטוריה האמריקאית."
+},
+{
+title: "2001 – פיגועי 11 בספטמבר",
+text: "החדר הפך למוקד קבלת החלטות בזמן חירום."
+}
+];
+
+function showEvent(index) {
+
+document.querySelectorAll(".timeline-item").forEach(el => el.classList.remove("active"));
+document.querySelectorAll(".timeline-item")[index].classList.add("active");
+
+document.getElementById("timeline-content").innerHTML =
+"<h3>" + events[index].title + "</h3><p>" + events[index].text + "</p>";
+}
+
+// INIT
+showEvent(0);
+
 function openImg(img){
-  document.getElementById("lightbox").style.display="flex";
-  document.getElementById("lightbox-img").src=img.src;
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=img.src;
 }
 
 function closeImg(){
-  document.getElementById("lightbox").style.display="none";
+document.getElementById("lightbox").style.display="none";
 }
+
 </script>
 
 </body>
