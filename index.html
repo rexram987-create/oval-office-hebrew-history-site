@@ -2,352 +2,48 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>חדר הסגלגל – מוזיאון דיגיטלי</title>
-
-<style>
-html { scroll-behavior: smooth; }
-
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0f172a;
-  color:#f8fafc;
-  line-height:1.8;
-}
-
-header{
-  height:70vh;
-  background:
-  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
-  url("images/oval-office-front-view.png") center/cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-header h1{ font-size:60px; }
-
-nav{
-  position:sticky;
-  top:0;
-  background:#020617;
-  padding:12px;
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  z-index:1000;
-}
-
-nav a{
-  background:#1e293b;
-  color:#e0f2fe;
-  padding:10px 18px;
-  border-radius:999px;
-  text-decoration:none;
-  white-space:nowrap;
-  font-weight:bold;
-}
-
-nav a:hover{
-  background:#38bdf8;
-  color:#000;
-}
-
-main{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-}
-
-section{
-  background:#111827;
-  padding:30px;
-  border-radius:20px;
-  margin-bottom:50px;
-}
-
-h2{ color:#38bdf8; }
-h3{ color:#facc15; }
-
-img{
-  width:100%;
-  border-radius:15px;
-  margin-top:15px;
-  cursor:pointer;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:#1e293b;
-  padding:15px;
-  border-radius:15px;
-}
-
-/* TIMELINE */
-.timeline{
-  display:flex;
-  overflow-x:auto;
-  gap:12px;
-  padding:15px 0;
-}
-
-.timeline-item{
-  min-width:120px;
-  padding:10px;
-  background:#1e293b;
-  border-radius:10px;
-  text-align:center;
-  cursor:pointer;
-}
-
-.timeline-item.active{
-  background:#38bdf8;
-  color:black;
-}
-
-.timeline-content{
-  margin-top:20px;
-  background:#020617;
-  padding:20px;
-  border-radius:15px;
-}
-
-/* PROFILE */
-.profile{
-  width:200px;
-  border-radius:50%;
-  display:block;
-  margin:auto;
-}
-
-/* LIGHTBOX */
-#lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.9);
-  justify-content:center;
-  align-items:center;
-}
-
-#lightbox img{
-  max-width:90%;
-  max-height:90%;
-}
-</style>
+<title>חדר הסגלגל</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <header>
 <h1>חדר הסגלגל</h1>
+<p>מוזיאון דיגיטלי היסטורי</p>
 </header>
 
 <nav>
-<a href="#home">ראשי</a>
-<a href="#leaders">וושינגטון וטאפט</a>
-<a href="#etymology">אטימולוגיה</a>
-<a href="#planning">תכנון</a>
-<a href="#dimensions">מידות</a>
-<a href="#furniture">ריהוט</a>
-<a href="#decorations">אמנות</a>
-<a href="#timeline">ציר זמן</a>
-<a href="#about">אודות</a>
+<a href="index.html">ראשי</a>
+<a href="oval-office.html">החדר</a>
+<a href="washington.html">וושינגטון</a>
+<a href="taft.html">טאפט</a>
+<a href="furniture.html">ריהוט</a>
+<a href="timeline.html">ציר זמן</a>
 </nav>
 
 <main>
 
-<section id="home">
+<section>
 <h2>מבוא</h2>
-<p>
-חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית, ואחד הסמלים הפוליטיים
-החשובים בעולם. החדר אינו רק מקום עבודה — אלא מוקד קבלת החלטות
-בעלות השפעה עולמית.
-</p>
-<img src="images/oval-office-front-view.png" onclick="openImg(this)">
-</section>
-
-<section id="leaders">
-<h2>ג׳ורג׳ וושינגטון וטאפט</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>ג׳ורג׳ וושינגטון</h3>
-<p><strong>שנות חיים:</strong> 1732–1799</p>
 
 <p>
-וושינגטון היה הנשיא הראשון של ארצות הברית ומי שהגדיר את דמות הנשיאות.
-הוא יצר מודל של מנהיגות שאינה מלוכנית אך עדיין סמכותית ומכובדת.
+חדר הסגלגל הוא אחד החדרים החשובים ביותר בעולם המודרני.
+זהו משרדו הרשמי של נשיא ארצות הברית, אך בפועל מדובר במוקד
+קבלת החלטות בעל השפעה עולמית.
 </p>
 
 <p>
-הקשר שלו לחדר הסגלגל הוא רעיוני: בתקופתו התפתח הרעיון של חללים אליפטיים
-לקבלת אורחים רשמיים — דבר שהשפיע ישירות על עיצוב החדר.
+החדר משלב אדריכלות, פוליטיקה, היסטוריה וסמליות.
+כל פרט בו — מהשולחן ועד השטיח — נבחר בקפידה ומשקף את
+זהותו של הנשיא המכהן.
 </p>
 
-<p>
-הוא יצר את הבסיס לכך שהנשיא יפעל מתוך מקום רשמי שמכבד את המוסד
-אך לא נראה כמו ארמון מלכותי.
-</p>
+<img src="images/oval-office-front-view.png">
 
-<img src="images/george-washington-portrait-gilbert-stuart.png" onclick="openImg(this)">
-</div>
-
-<div class="card">
-<h3>ויליאם הווארד טאפט</h3>
-<p><strong>שנות חיים:</strong> 1857–1930</p>
-
-<p>
-טאפט היה הנשיא ה־27 של ארצות הברית, והוא זה שבנה את חדר הסגלגל הראשון בשנת 1909.
-</p>
-
-<p>
-הוא הבין שהנשיאות כבר אינה רק תפקיד טקסי,
-אלא מרכז ניהול מורכב שדורש משרד ייעודי.
-</p>
-
-<p>
-לכן הוא יצר את חדר הסגלגל כמרכז עבודה אמיתי — צעד שהפך אותו
-לאחד הסמלים המזוהים ביותר עם הנהגת ארצות הברית.
-</p>
-
-<img src="images/william-howard-taft-portrait.png" onclick="openImg(this)">
-</div>
-
-</div>
-</section>
-
-<section id="etymology">
-<h2>אטימולוגיה</h2>
-<p>
-המונח Oval Office מגיע מהמילה הלטינית ovum (ביצה),
-ומשמעותו "המשרד האליפטי".
-</p>
-</section>
-
-<section id="planning">
-<h2>תכנון</h2>
-<p>
-1909 – בנייה ראשונה על ידי טאפט  
-1934 – מעבר למיקום הנוכחי על ידי רוזוולט  
-</p>
-</section>
-
-<section id="dimensions">
-<h2>מידות</h2>
-<ul>
-<li>אורך: 10.9 מטר</li>
-<li>רוחב: 8.8 מטר</li>
-<li>גובה: 5.6 מטר</li>
-</ul>
-</section>
-
-<section id="furniture">
-<h2>ריהוט</h2>
-
-<div class="grid">
-<div class="card">
-<h3>Resolute Desk</h3>
-<p>שולחן מפורסם שנבנה מעץ ספינה בריטית.</p>
-<img src="images/resolute-desk-front-view.png" onclick="openImg(this)">
-</div>
-
-<div class="card">
-<h3>אזור ישיבה</h3>
-<p>משמש לפגישות רשמיות ודיפלומטיות.</p>
-<img src="images/oval-office-front-view.png" onclick="openImg(this)">
-</div>
-</div>
-
-</section>
-
-<section id="decorations">
-<h2>אמנות</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>שטיח</h3>
-<img src="images/oval-office-presidential-seal-carpet.png" onclick="openImg(this)">
-</div>
-
-<div class="card">
-<h3>Broncho Buster</h3>
-<img src="images/the-broncho-buster-remington-met-1895.jpg" onclick="openImg(this)">
-</div>
-
-<div class="card">
-<h3>צ׳רצ׳יל</h3>
-<img src="images/winston-churchill-bust-epstein.png" onclick="openImg(this)">
-</div>
-
-</div>
-</section>
-
-<section id="timeline">
-<h2>ציר זמן אינטראקטיבי</h2>
-
-<div class="timeline">
-<div class="timeline-item active" onclick="showEvent(0)">1909</div>
-<div class="timeline-item" onclick="showEvent(1)">1934</div>
-<div class="timeline-item" onclick="showEvent(2)">1962</div>
-<div class="timeline-item" onclick="showEvent(3)">1969</div>
-<div class="timeline-item" onclick="showEvent(4)">1974</div>
-<div class="timeline-item" onclick="showEvent(5)">2001</div>
-</div>
-
-<div id="timelineContent" class="timeline-content"></div>
-
-</section>
-
-<section id="about">
-<h2>אודות</h2>
-<img src="images/ram-profile.jpg" class="profile" onclick="openImg(this)">
-<p>אתר היסטורי על חדר הסגלגל.</p>
 </section>
 
 </main>
-
-<div id="lightbox" onclick="closeImg()">
-<img id="lightbox-img">
-</div>
-
-<script>
-const events=[
-["1909","הקמת החדר על ידי טאפט"],
-["1934","מעבר למיקום הנוכחי"],
-["1962","משבר הטילים בקובה"],
-["1969","נחיתה על הירח"],
-["1974","התפטרות ניקסון"],
-["2001","פיגועי 11 בספטמבר"]
-];
-
-function showEvent(i){
-document.querySelectorAll(".timeline-item").forEach(el=>el.classList.remove("active"));
-document.querySelectorAll(".timeline-item")[i].classList.add("active");
-document.getElementById("timelineContent").innerHTML =
-"<h3>"+events[i][0]+"</h3><p>"+events[i][1]+"</p>";
-}
-
-showEvent(0);
-
-function openImg(img){
-document.getElementById("lightbox").style.display="flex";
-document.getElementById("lightbox-img").src=img.src;
-}
-
-function closeImg(){
-document.getElementById("lightbox").style.display="none";
-}
-</script>
 
 </body>
 </html>
