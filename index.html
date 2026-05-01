@@ -8,15 +8,14 @@
 <style>
 html { scroll-behavior: smooth; }
 
-body {
+body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial;
   background:#0f172a;
   color:#f8fafc;
   line-height:1.8;
 }
 
-/* HEADER */
 header{
   height:70vh;
   background:
@@ -28,11 +27,8 @@ header{
   text-align:center;
 }
 
-header h1{
-  font-size:64px;
-}
+header h1{ font-size:60px; }
 
-/* NAV */
 nav{
   position:sticky;
   top:0;
@@ -59,7 +55,6 @@ nav a:hover{
   color:#000;
 }
 
-/* MAIN */
 main{
   max-width:1100px;
   margin:auto;
@@ -74,6 +69,7 @@ section{
 }
 
 h2{ color:#38bdf8; }
+h3{ color:#facc15; }
 
 img{
   width:100%;
@@ -82,7 +78,6 @@ img{
   cursor:pointer;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -110,7 +105,6 @@ img{
   border-radius:10px;
   text-align:center;
   cursor:pointer;
-  font-weight:bold;
 }
 
 .timeline-item.active{
@@ -123,7 +117,6 @@ img{
   background:#020617;
   padding:20px;
   border-radius:15px;
-  min-height:120px;
 }
 
 /* PROFILE */
@@ -142,14 +135,12 @@ img{
   background:rgba(0,0,0,.9);
   justify-content:center;
   align-items:center;
-  z-index:9999;
 }
 
 #lightbox img{
   max-width:90%;
   max-height:90%;
 }
-
 </style>
 </head>
 
@@ -161,6 +152,7 @@ img{
 
 <nav>
 <a href="#home">ראשי</a>
+<a href="#leaders">וושינגטון וטאפט</a>
 <a href="#etymology">אטימולוגיה</a>
 <a href="#planning">תכנון</a>
 <a href="#dimensions">מידות</a>
@@ -172,36 +164,83 @@ img{
 
 <main>
 
-<!-- HOME -->
 <section id="home">
 <h2>מבוא</h2>
 <p>
-חדר הסגלגל הוא מרכז קבלת ההחלטות של נשיא ארצות הברית,
-וסמל עולמי של הנהגה, דיפלומטיה וכוח פוליטי.
+חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית, ואחד הסמלים הפוליטיים
+החשובים בעולם. החדר אינו רק מקום עבודה — אלא מוקד קבלת החלטות
+בעלות השפעה עולמית.
 </p>
 <img src="images/oval-office-front-view.png" onclick="openImg(this)">
 </section>
 
-<!-- ETYMOLOGY -->
+<section id="leaders">
+<h2>ג׳ורג׳ וושינגטון וטאפט</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>ג׳ורג׳ וושינגטון</h3>
+<p><strong>שנות חיים:</strong> 1732–1799</p>
+
+<p>
+וושינגטון היה הנשיא הראשון של ארצות הברית ומי שהגדיר את דמות הנשיאות.
+הוא יצר מודל של מנהיגות שאינה מלוכנית אך עדיין סמכותית ומכובדת.
+</p>
+
+<p>
+הקשר שלו לחדר הסגלגל הוא רעיוני: בתקופתו התפתח הרעיון של חללים אליפטיים
+לקבלת אורחים רשמיים — דבר שהשפיע ישירות על עיצוב החדר.
+</p>
+
+<p>
+הוא יצר את הבסיס לכך שהנשיא יפעל מתוך מקום רשמי שמכבד את המוסד
+אך לא נראה כמו ארמון מלכותי.
+</p>
+
+<img src="images/george-washington-portrait-gilbert-stuart.png" onclick="openImg(this)">
+</div>
+
+<div class="card">
+<h3>ויליאם הווארד טאפט</h3>
+<p><strong>שנות חיים:</strong> 1857–1930</p>
+
+<p>
+טאפט היה הנשיא ה־27 של ארצות הברית, והוא זה שבנה את חדר הסגלגל הראשון בשנת 1909.
+</p>
+
+<p>
+הוא הבין שהנשיאות כבר אינה רק תפקיד טקסי,
+אלא מרכז ניהול מורכב שדורש משרד ייעודי.
+</p>
+
+<p>
+לכן הוא יצר את חדר הסגלגל כמרכז עבודה אמיתי — צעד שהפך אותו
+לאחד הסמלים המזוהים ביותר עם הנהגת ארצות הברית.
+</p>
+
+<img src="images/william-howard-taft-portrait.png" onclick="openImg(this)">
+</div>
+
+</div>
+</section>
+
 <section id="etymology">
 <h2>אטימולוגיה</h2>
 <p>
-Oval = אליפסה (מלטינית ovum = ביצה).  
-Office = משרד רשמי.  
-כלומר: "המשרד האליפטי".
+המונח Oval Office מגיע מהמילה הלטינית ovum (ביצה),
+ומשמעותו "המשרד האליפטי".
 </p>
 </section>
 
-<!-- PLANNING -->
 <section id="planning">
-<h2>תכנון ובנייה</h2>
+<h2>תכנון</h2>
 <p>
-1909 – טאפט בונה את החדר הראשון.  
-1934 – רוזוולט מעביר למיקום הנוכחי.  
+1909 – בנייה ראשונה על ידי טאפט  
+1934 – מעבר למיקום הנוכחי על ידי רוזוולט  
 </p>
 </section>
 
-<!-- DIMENSIONS -->
 <section id="dimensions">
 <h2>מידות</h2>
 <ul>
@@ -211,31 +250,30 @@ Office = משרד רשמי.
 </ul>
 </section>
 
-<!-- FURNITURE -->
 <section id="furniture">
 <h2>ריהוט</h2>
 
 <div class="grid">
 <div class="card">
 <h3>Resolute Desk</h3>
-<p>שולחן נשיאותי מפורסם שנבנה מעץ ספינה בריטית.</p>
+<p>שולחן מפורסם שנבנה מעץ ספינה בריטית.</p>
 <img src="images/resolute-desk-front-view.png" onclick="openImg(this)">
 </div>
 
 <div class="card">
 <h3>אזור ישיבה</h3>
-<p>משמש לפגישות ודיפלומטיה.</p>
+<p>משמש לפגישות רשמיות ודיפלומטיות.</p>
 <img src="images/oval-office-front-view.png" onclick="openImg(this)">
 </div>
 </div>
 
 </section>
 
-<!-- DECORATIONS -->
 <section id="decorations">
 <h2>אמנות</h2>
 
 <div class="grid">
+
 <div class="card">
 <h3>שטיח</h3>
 <img src="images/oval-office-presidential-seal-carpet.png" onclick="openImg(this)">
@@ -250,11 +288,10 @@ Office = משרד רשמי.
 <h3>צ׳רצ׳יל</h3>
 <img src="images/winston-churchill-bust-epstein.png" onclick="openImg(this)">
 </div>
-</div>
 
+</div>
 </section>
 
-<!-- TIMELINE -->
 <section id="timeline">
 <h2>ציר זמן אינטראקטיבי</h2>
 
@@ -271,7 +308,6 @@ Office = משרד רשמי.
 
 </section>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>אודות</h2>
 <img src="images/ram-profile.jpg" class="profile" onclick="openImg(this)">
@@ -280,26 +316,23 @@ Office = משרד רשמי.
 
 </main>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeImg()">
 <img id="lightbox-img">
 </div>
 
 <script>
-
-const events = [
-["1909","הקמת החדר ע\"י טאפט"],
+const events=[
+["1909","הקמת החדר על ידי טאפט"],
 ["1934","מעבר למיקום הנוכחי"],
 ["1962","משבר הטילים בקובה"],
-["1969","שיחה עם אסטרונאוטים"],
+["1969","נחיתה על הירח"],
 ["1974","התפטרות ניקסון"],
-["2001","אירועי 11 בספטמבר"]
+["2001","פיגועי 11 בספטמבר"]
 ];
 
 function showEvent(i){
 document.querySelectorAll(".timeline-item").forEach(el=>el.classList.remove("active"));
 document.querySelectorAll(".timeline-item")[i].classList.add("active");
-
 document.getElementById("timelineContent").innerHTML =
 "<h3>"+events[i][0]+"</h3><p>"+events[i][1]+"</p>";
 }
@@ -314,7 +347,6 @@ document.getElementById("lightbox-img").src=img.src;
 function closeImg(){
 document.getElementById("lightbox").style.display="none";
 }
-
 </script>
 
 </body>
