@@ -2,49 +2,248 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>חדר הסגלגל</title>
-<link rel="stylesheet" href="styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חדר הסגלגל – מוזיאון דיגיטלי</title>
+
+<style>
+html{scroll-behavior:smooth;}
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:#f8fafc;
+line-height:1.9;
+}
+
+/* HEADER */
+header{
+height:70vh;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
+url("images/oval-office-front-view.png") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+header h1{font-size:60px;}
+
+/* NAV */
+nav{
+position:sticky;
+top:0;
+background:#020617;
+display:flex;
+gap:10px;
+padding:12px;
+overflow-x:auto;
+z-index:1000;
+}
+nav a{
+background:#1e293b;
+padding:10px 16px;
+border-radius:999px;
+color:white;
+text-decoration:none;
+}
+nav a:hover{background:#38bdf8;color:black;}
+
+/* CONTENT */
+main{max-width:1100px;margin:auto;padding:20px;}
+
+section{
+background:#111827;
+padding:30px;
+border-radius:20px;
+margin-bottom:40px;
+}
+
+h2{color:#38bdf8;}
+h3{color:#facc15;}
+
+.block{
+background:#020617;
+padding:18px;
+border-radius:15px;
+margin-top:15px;
+border-right:4px solid #38bdf8;
+}
+
+img{
+width:100%;
+border-radius:15px;
+margin-top:15px;
+cursor:pointer;
+}
+
+/* LIGHTBOX */
+#lightbox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:15px;
+}
+#lightbox span{
+position:absolute;
+top:20px;
+left:30px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
 <header>
 <h1>חדר הסגלגל</h1>
-<p>מוזיאון דיגיטלי היסטורי</p>
 </header>
 
 <nav>
-<a href="index.html">ראשי</a>
-<a href="washington.html">וושינגטון</a>
-<a href="taft.html">טאפט</a>
-<a href="architecture.html">אדריכלות</a>
-<a href="furniture.html">ריהוט</a>
-<a href="decorations.html">אמנות</a>
-<a href="timeline.html">ציר זמן</a>
-<a href="about.html">אודות</a>
+<a href="#home">מבוא</a>
+<a href="#leaders">מנהיגים</a>
+<a href="#architecture">אדריכלות</a>
+<a href="#furniture">ריהוט</a>
 </nav>
 
 <main>
 
-<section>
+<!-- מבוא -->
+<section id="home">
 <h2>מבוא</h2>
 
 <p>
 חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית ואחד הסמלים הפוליטיים
-החשובים ביותר בעולם המודרני. החדר משלב אדריכלות, היסטוריה וסמליות,
-ומשמש מוקד קבלת החלטות בעל השפעה גלובלית.
+החשובים ביותר בעולם המודרני. מעבר להיותו משרד עבודה, מדובר בחלל טעון
+משמעות היסטורית, דיפלומטית וסמלית.
 </p>
 
 <p>
-האתר שלפניכם מציג את החדר מכל זווית אפשרית — היסטורית, אדריכלית,
-עיצובית וסמלית — כאשר כל נושא מקבל דף עצמאי ומעמיק.
+בחדר זה מתקבלות החלטות המשפיעות על מיליוני בני אדם ברחבי העולם.
+כל פגישה, נאום או חתימה על חוק, מתרחשים בסביבה שעוצבה בקפידה כדי
+לשדר סמכות, יציבות והמשכיות שלטונית.
 </p>
 
-<img src="images/oval-office-front-view.png">
+<div class="block">
+<h3>למה החדר כל כך חשוב?</h3>
+<p>
+החדר משמש כמרכז העצבים של הממשל האמריקאי. כל פרט בו — החל מהריהוט
+ועד הצבעים — נבחר כדי לתמוך בתדמית הנשיאות.
+</p>
+</div>
+
+<img src="images/oval-office-front-view.png" onclick="openImg(this)">
+</section>
+
+<!-- מנהיגים -->
+<section id="leaders">
+<h2>מנהיגים מרכזיים</h2>
+
+<h3>ג׳ורג׳ וושינגטון</h3>
+
+<p>
+ג׳ורג׳ וושינגטון (1732–1799) היה הנשיא הראשון של ארצות הברית ואחד
+האבות המייסדים שלה. הוא לא פעל בחדר הסגלגל, אך יצר את הבסיס הרעיוני
+לקיומו — מוסד נשיאותי שאינו מלוכני אך עדיין סמכותי ומכובד.
+</p>
+
+<div class="block">
+<h3>תרומתו</h3>
+<p>
+וושינגטון הגדיר כיצד נשיא צריך להתנהל: איזון בין כוח לאחריות,
+הימנעות ממלוכה, ושמירה על כבוד המוסד. עקרונות אלה השפיעו על עיצוב
+החדר כמקום רשמי אך לא ראוותני.
+</p>
+</div>
+
+<img src="images/george-washington-portrait-gilbert-stuart.png" onclick="openImg(this)">
+
+<h3>ויליאם הווארד טאפט</h3>
+
+<p>
+טאפט (1857–1930) היה הנשיא ה־27 של ארצות הברית, והוא האדם שהקים
+בפועל את חדר הסגלגל בשנת 1909 כחלק מהאגף המערבי.
+</p>
+
+<div class="block">
+<h3>חשיבות היסטורית</h3>
+<p>
+הקמת החדר סימנה מעבר מהנהגה טקסית להנהגה ניהולית.
+הנשיא הפך למנהל מערכת מורכבת, והחדר הפך למרכז העבודה שלו.
+</p>
+</div>
+
+<img src="images/william-howard-taft-portrait.png" onclick="openImg(this)">
+</section>
+
+<!-- אדריכלות -->
+<section id="architecture">
+<h2>אדריכלות</h2>
+
+<p>
+החדר בנוי בצורת אליפסה, צורה נדירה שמייצרת זרימה הרמונית של תנועה
+ושדה ראייה רחב. עיצוב זה מאפשר גם תחושת פתיחות וגם תחושת סמכות.
+</p>
+
+<div class="block">
+<h3>מידות</h3>
+<ul>
+<li>אורך: 10.9 מטר</li>
+<li>רוחב: 8.8 מטר</li>
+<li>גובה: 5.6 מטר</li>
+</ul>
+</div>
 
 </section>
 
+<!-- ריהוט -->
+<section id="furniture">
+<h2>ריהוט</h2>
+
+<h3>Resolute Desk</h3>
+
+<p>
+שולחן זה נבנה מעץ של ספינה בריטית בשם HMS Resolute.
+הוא הוענק לנשיא ארצות הברית כסמל לידידות בין המדינות.
+</p>
+
+<div class="block">
+<h3>משמעות</h3>
+<p>
+השולחן מסמל יציבות, המשכיות וקשר היסטורי בין מדינות.
+הוא אחד הפריטים המזוהים ביותר עם מוסד הנשיאות.
+</p>
+</div>
+
+<img src="images/resolute-desk-front-view.png" onclick="openImg(this)">
+</section>
+
 </main>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+<span onclick="closeImg()">&times;</span>
+<img id="lightbox-img">
+</div>
+
+<script>
+function openImg(img){
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=img.src;
+}
+
+function closeImg(){
+document.getElementById("lightbox").style.display="none";
+}
+</script>
 
 </body>
 </html>
