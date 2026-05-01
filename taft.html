@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <title>טאפט</title>
 <link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 </head>
 
 <body>
 
-<header><h1>ויליאם הווארד טאפט</h1></header>
+<header><h1>טאפט</h1></header>
 
 <nav>
 <a href="index.html">ראשי</a>
@@ -20,20 +21,18 @@
 <section>
 <h2>הקמת החדר</h2>
 <p>
-בשנת 1909 הקים טאפט את חדר הסגלגל הראשון כחלק מהאגף המערבי.
-</p>
-</section>
-
-<section>
-<h2>משמעות</h2>
-<p>
-הוא הפך את הנשיאות למערכת ניהול מודרנית עם משרד קבוע.
+טאפט בנה את חדר הסגלגל בשנת 1909 כחלק מהאגף המערבי.
 </p>
 
-<img src="images/william-howard-taft-portrait.png">
+<img src="images/william-howard-taft-portrait.png" onclick="openImg(this)">
 </section>
 
 </main>
+
+<div id="lightbox">
+<span onclick="closeImg()">&times;</span>
+<img id="lightbox-img">
+</div>
 
 </body>
 </html>
