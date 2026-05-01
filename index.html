@@ -1,79 +1,1025 @@
-<div id="home" class="tab active">
-  <section>
-    <h2>עמוד ראשי – מבוא מורחב</h2>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>חדר הסגלגל – מוזיאון דיגיטלי</title>
 
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.9;
+    }
+
+    header {
+      min-height: 82vh;
+      background:
+        linear-gradient(rgba(2, 6, 23, 0.70), rgba(2, 6, 23, 0.93)),
+        url("images/oval-office-front-view.png") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      font-size: clamp(44px, 8vw, 82px);
+      margin: 0;
+      color: #ffffff;
+    }
+
+    header p {
+      max-width: 1000px;
+      margin: 24px auto 0;
+      color: #dbeafe;
+      font-size: clamp(18px, 2vw, 24px);
+    }
+
+    .language-box {
+      background: #020617;
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .language-box button,
+    .tab-button,
+    .timeline-buttons button {
+      background: #1e293b;
+      color: #e0f2fe;
+      border: 1px solid #475569;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      margin: 4px;
+      font-weight: bold;
+      transition: 0.25s;
+    }
+
+    .language-box button:hover,
+    .tab-button:hover,
+    .tab-button.active,
+    .timeline-buttons button:hover,
+    .timeline-buttons button.active {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    .tabs {
+      background: #020617;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 12px;
+      border-bottom: 1px solid #334155;
+    }
+
+    main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 30px 18px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    section {
+      background: #111827;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 18px 38px rgba(0,0,0,0.24);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #38bdf8;
+      font-size: clamp(28px, 4vw, 38px);
+    }
+
+    h3 {
+      color: #facc15;
+      margin-top: 28px;
+      font-size: 24px;
+    }
+
+    h4 {
+      color: #93c5fd;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    ul {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    }
+
+    .card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .wide-img {
+      width: 100%;
+      max-height: 620px;
+      object-fit: cover;
+      border-radius: 20px;
+      cursor: pointer;
+      border: 1px solid #475569;
+      display: block;
+    }
+
+    .profile-img {
+      width: 235px;
+      height: 235px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #38bdf8;
+      display: block;
+      margin: 0 auto 22px;
+      cursor: pointer;
+    }
+
+    .credit {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 12px;
+      border-top: 1px solid #334155;
+      padding-top: 10px;
+    }
+
+    .note {
+      background: #0f172a;
+      border-right: 5px solid #38bdf8;
+      border-left: 5px solid transparent;
+      padding: 18px;
+      border-radius: 16px;
+      margin: 22px 0;
+    }
+
+    html[dir="ltr"] .note {
+      border-right: 5px solid transparent;
+      border-left: 5px solid #38bdf8;
+    }
+
+    .fact-box {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 18px;
+      padding: 18px;
+      margin: 18px 0;
+    }
+
+    .fact-box strong {
+      color: #facc15;
+    }
+
+    .timeline-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .timeline-detail {
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 18px;
+      padding: 24px;
+      min-height: 240px;
+    }
+
+    .lang-en {
+      display: none;
+    }
+
+    footer {
+      background: #020617;
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #lightbox img {
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 18px;
+    }
+
+    #lightbox span {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 42px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      section { padding: 22px; }
+      .card img { height: 250px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="lang-he">
+    <h1>חדר הסגלגל</h1>
     <p>
-      חדר הסגלגל הוא אחד החללים המזוהים ביותר עם מוסד הנשיאות של ארצות הברית.
-      הוא איננו רק משרד עבודה, אלא במה היסטורית, אדריכלית ותקשורתית.
-      מן החדר הזה יוצאים נאומים לאומה, מתקיימות פגישות עם מנהיגים זרים,
-      נחתמים צווים נשיאותיים, ומצולמות תמונות שהופכות לעיתים לסמלים של תקופה שלמה.
+      מוזיאון דיגיטלי בעברית על אחד החדרים המשפיעים בעולם: ההיסטוריה, האדריכלות, הריהוט,
+      הקישוטים, הסמלים והאירועים המכוננים של משרד נשיא ארצות הברית.
     </p>
+  </div>
 
+  <div class="lang-en">
+    <h1>The Oval Office</h1>
     <p>
-      כוחו של החדר נובע מן השילוב בין צורה, מיקום, ריהוט וסמליות. הצורה האליפטית
-      יוצרת תחושה של פתיחות וזרימה, אך גם ממקדת את המבט בשולחן הנשיא,
-      בחלונות שמאחוריו, באח שמולו, ובפריטים שנבחרו בקפידה כדי לבטא מסר.
+      A digital museum about one of the most influential rooms in the world: the history, architecture,
+      furniture, decorations, symbols, and defining events of the office of the President of the United States.
     </p>
+  </div>
+</header>
 
-    <p>
-      כל נשיא כמעט משנה את עיצוב החדר בהתאם לאישיותו ולתפיסת עולמו:
-      שטיח חדש, וילונות חדשים, ציורים, פסלים, תמונות משפחתיות, ולעיתים גם שינוי
-      בסידור הכורסאות והספות. לכן חדר הסגלגל הוא גם חדר קבוע וגם חדר משתנה —
-      אותו חלל פיזי, אבל עם סיפור אחר בכל ממשל.
-    </p>
-
-    <img src="images/oval-office-front-view.png" alt="חדר הסגלגל">
-  </section>
-
-  <section>
-    <h2>ג׳ורג׳ וושינגטון</h2>
-
-    <p><strong>שנות חיים:</strong> 1732–1799</p>
-
-    <p>
-      ג׳ורג׳ וושינגטון לא ישב בחדר הסגלגל המודרני, משום שהחדר נבנה שנים רבות
-      לאחר מותו. עם זאת, תרומתו לרעיון שמאחורי החדר חשובה מאוד. בתקופתו נוצרה
-      המסורת של שימוש בחדרים אליפטיים לקבלות פנים רשמיות בבית הנשיא.
-    </p>
-
-    <p>
-      הצורה האליפטית התאימה במיוחד לאירוח מדיני: היא אפשרה לאורחים לנוע סביב החדר,
-      לפגוש את הנשיא בצורה מסודרת, וליצור תחושה של טקסיות בלי להיראות מלכותית מדי.
-      עבור הרפובליקה האמריקאית הצעירה, זה היה איזון עדין: מצד אחד כבוד וסמכות,
-      ומצד שני הימנעות מדימוי של חצר מלוכה.
-    </p>
-
-    <p>
-      לכן וושינגטון אינו “בונה” חדר הסגלגל, אבל הוא קשור לשורש הרעיוני שלו:
-      חדר רשמי, מעוגל, טקסי, שמייצג את הנשיאות בלי להפוך אותה למלוכה.
-    </p>
-
-    <img src="images/george-washington-portrait-gilbert-stuart.png" alt="ג׳ורג׳ וושינגטון">
-  </section>
-
-  <section>
-    <h2>ויליאם הווארד טאפט</h2>
-
-    <p><strong>שנות חיים:</strong> 1857–1930</p>
-
-    <p>
-      ויליאם הווארד טאפט הוא הדמות המרכזית ביצירת חדר הסגלגל כמשרד נשיאותי ממשי.
-      בשנת 1909, בתקופת כהונתו, נבנה חדר הסגלגל הראשון באגף המערבי של הבית הלבן.
-    </p>
-
-    <p>
-      בתקופה זו הנשיאות האמריקאית כבר הייתה מוסד גדול ומורכב יותר מאשר במאה ה־18.
-      הנשיא נזקק למרחב עבודה קבוע, סמוך ליועצים, למזכירות, לחדרי ישיבות ולמרכז
-      קבלת ההחלטות. בניית החדר באגף המערבי ביטאה את המעבר של הנשיאות למבנה עבודה
-      מודרני ומנהלי יותר.
-    </p>
-
-    <p>
-      טאפט חיבר בין המסורת האליפטית המוקדמת של הבית הלבן לבין צורכי הנשיאות המודרנית.
-      לכן תרומתו היא לא רק אדריכלית, אלא מוסדית: הוא עזר להפוך את משרד הנשיא
-      לחלל קבוע, מזוהה ורשמי.
-    </p>
-
-    <img src="images/william-howard-taft-portrait.png" alt="ויליאם הווארד טאפט">
-  </section>
+<div class="language-box">
+  <button onclick="setLanguage('he')">עברית</button>
+  <button onclick="setLanguage('en')">English</button>
 </div>
+
+<nav class="tabs">
+  <button class="tab-button active" onclick="openTab(event, 'home')">ראשי / Home</button>
+  <button class="tab-button" onclick="openTab(event, 'dimensions')">מידות / Dimensions</button>
+  <button class="tab-button" onclick="openTab(event, 'furniture')">ריהוט / Furniture</button>
+  <button class="tab-button" onclick="openTab(event, 'decorations')">קישוטים / Decorations</button>
+  <button class="tab-button" onclick="openTab(event, 'timeline')">ציר זמן / Timeline</button>
+  <button class="tab-button" onclick="openTab(event, 'about')">אודות / About</button>
+  <button class="tab-button" onclick="openTab(event, 'sources')">מקורות / Sources</button>
+</nav>
+
+<main>
+
+  <div id="home" class="tab-content active">
+    <section class="lang-he">
+      <h2>עמוד ראשי – מבוא אולטרה מורחב</h2>
+      <p>
+        חדר הסגלגל הוא אחד החללים הפוליטיים המפורסמים ביותר בעולם המודרני. לכאורה מדובר במשרד עבודה,
+        אך בפועל זהו חלל שמרכז בתוכו היסטוריה, אדריכלות, תקשורת, סמליות לאומית ודיפלומטיה בינלאומית.
+        כאשר נשיא ארצות הברית יושב מאחורי שולחן Resolute, חותם על חוק, מקבל מנהיג זר או נושא נאום לאומה,
+        החדר עצמו הופך לחלק בלתי נפרד מן המסר.
+      </p>
+
+      <p>
+        האופן שבו החדר מצולם, הרקע שמופיע מאחורי הנשיא, הציורים שעל הקירות, הפסלים שעל השולחנות,
+        צבע השטיח, הווילונות, הדגלים ואפילו זווית הישיבה – כל אלה משמשים כשפה חזותית. זו שפה שאומרת:
+        כאן נמצא מרכז הכוח הביצועי של ארצות הברית. לכן חדר הסגלגל אינו רק מקום שבו מתקבלות החלטות;
+        הוא גם מקום שבו החלטות מוצגות לציבור ולעולם.
+      </p>
+
+      <p>
+        צורתו האליפטית של החדר מעניקה לו אופי ייחודי. חדר מלבני רגיל יוצר קווים חדים והיררכיה ברורה,
+        אך חדר אליפטי יוצר תחושה של תנועה, רכות, המשכיות ושיחה. אין בו פינות חדות שמקבעות את המבט,
+        ולכן העין נעה סביב החלל ומגיעה שוב ושוב אל המרכז: הנשיא, השולחן, הדגלים והאח.
+      </p>
+
+      <p>
+        לאורך השנים כל נשיא כמעט עיצב את החדר מחדש. השינויים אינם רק עניין אסתטי. הם משקפים סדרי עדיפויות,
+        תפיסת עולם, זיקה לדמויות היסטוריות, רצון לשדר ממלכתיות או עממיות, מסורת או חדשנות. לכן אפשר לראות
+        בכל גרסה של חדר הסגלגל מעין דיוקן עקיף של הנשיא המכהן.
+      </p>
+
+      <img class="wide-img" src="images/oval-office-front-view.png" alt="חדר הסגלגל" onclick="openLightbox(this)">
+      <p class="credit">קרדיט: צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
+    </section>
+
+    <section class="lang-en">
+      <h2>Home – Ultra Expanded Introduction</h2>
+      <p>
+        The Oval Office is one of the most recognizable political spaces in the modern world. On the surface,
+        it is a working office. In practice, it is a room where history, architecture, media, national symbolism,
+        and international diplomacy converge. When a president sits behind the Resolute Desk, signs a law,
+        receives a foreign leader, or addresses the nation, the room itself becomes part of the message.
+      </p>
+      <p>
+        The way the room is photographed, the background behind the president, the paintings, sculptures,
+        carpet, curtains, flags, and even seating angles all form a visual language. That language communicates
+        authority, continuity, tradition, and executive power.
+      </p>
+      <p>
+        Its oval form is central to its effect. Unlike a rectangular office, the oval creates movement, softness,
+        and continuity. The eye moves around the room and returns to the center: the president, the desk,
+        the flags, and the fireplace.
+      </p>
+      <p>
+        Almost every president reshapes the room. These changes are not merely decorative; they express priorities,
+        values, historical references, and political identity. In that sense, each version of the Oval Office is
+        also an indirect portrait of the president who occupies it.
+      </p>
+
+      <img class="wide-img" src="images/oval-office-front-view.png" alt="The Oval Office" onclick="openLightbox(this)">
+      <p class="credit">Credit: Official White House / U.S. Government photograph, Public Domain.</p>
+    </section>
+
+    <section class="lang-he">
+      <h2>ג׳ורג׳ וושינגטון – השורש הרעיוני של החלל האליפטי</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="images/george-washington-portrait-gilbert-stuart.png" alt="ג׳ורג׳ וושינגטון" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>ג׳ורג׳ וושינגטון</h3>
+            <p><strong>שנות חיים:</strong> 1732–1799</p>
+            <p>
+              וושינגטון לא עבד בחדר הסגלגל המודרני, מפני שהחדר נבנה רק במאה ה־20. עם זאת, הוא קשור
+              באופן עמוק למסורת האדריכלית שממנה צמח החדר. בתקופתו של וושינגטון התבסס הרעיון שחדרים
+              אליפטיים מתאימים לקבלות פנים רשמיות, משום שהם מאפשרים תנועה מעגלית, מפגש מסודר עם אורחים
+              והצגה מאוזנת של סמכות.
+            </p>
+            <p>
+              עבור הרפובליקה האמריקאית הצעירה, הצורה האליפטית הייתה פתרון סמלי חשוב. היא איפשרה ליצור
+              טקסיות וכבוד בלי לחקות באופן מוגזם חצר מלוכה אירופית. כך נוצר איזון בין ממלכתיות לבין
+              ערכים רפובליקניים: הנשיא נראה מכובד, אך לא מלך.
+            </p>
+            <p>
+              לכן תרומתו של וושינגטון לחדר הסגלגל אינה בבנייה פיזית, אלא ביצירת מסורת: חלל נשיאותי
+              רשמי, טקסי, פתוח ומעוגל, שבו המנהיגות נראית לעיני הציבור באופן מבוקר ומכובד.
+            </p>
+            <p class="credit">דיוקן ג׳ורג׳ וושינגטון, מאת Gilbert Stuart, נחלת הכלל.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/william-howard-taft-portrait.png" alt="ויליאם הווארד טאפט" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>ויליאם הווארד טאפט</h3>
+            <p><strong>שנות חיים:</strong> 1857–1930</p>
+            <p>
+              טאפט הוא הנשיא המזוהה ביותר עם יצירת חדר הסגלגל כמשרד נשיאותי ממשי. בשנת 1909, בתקופת כהונתו,
+              נבנה חדר הסגלגל הראשון באגף המערבי. זה היה צעד משמעותי בהתפתחות הבית הלבן כמרכז עבודה מודרני,
+              ולא רק כמעון רשמי.
+            </p>
+            <p>
+              בתחילת המאה ה־20 גדלו מאוד צורכי הממשל הפדרלי. הנשיא נזקק למשרד סמוך ליועצים, מזכירים,
+              חדרי ישיבות ומוקדי קבלת החלטות. טאפט הבין שהנשיאות המודרנית דורשת חלל עבודה קבוע,
+              ייצוגי ומאורגן יותר.
+            </p>
+            <p>
+              בכך טאפט חיבר בין המסורת האליפטית המוקדמת לבין המבנה המנהלי של הנשיאות המודרנית. החדר שנבנה
+              בתקופתו הפך בהמשך לאחד הסמלים המרכזיים של מוסד הנשיאות.
+            </p>
+            <p class="credit">דיוקן ויליאם הווארד טאפט, נחלת הכלל.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lang-en">
+      <h2>Washington and Taft – The Idea and the Modern Office</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="images/george-washington-portrait-gilbert-stuart.png" alt="George Washington" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>George Washington</h3>
+            <p><strong>Life years:</strong> 1732–1799</p>
+            <p>
+              Washington never worked in the modern Oval Office, but he is connected to the tradition from which it grew.
+              In his era, oval rooms were used for formal receptions because they allowed orderly movement, ceremonial
+              dignity, and a balanced presentation of authority.
+            </p>
+            <p>
+              For the young American republic, the oval form helped balance dignity with republican restraint. It offered
+              ceremony without imitating monarchy too closely.
+            </p>
+            <p class="credit">Portrait of George Washington by Gilbert Stuart, Public Domain.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/william-howard-taft-portrait.png" alt="William Howard Taft" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>William Howard Taft</h3>
+            <p><strong>Life years:</strong> 1857–1930</p>
+            <p>
+              Taft is closely associated with the creation of the Oval Office as a real presidential workspace. In 1909,
+              during his administration, the first Oval Office was built in the West Wing.
+            </p>
+            <p>
+              As the federal government expanded, the president needed a permanent office near advisers, secretaries,
+              meeting rooms, and the operational center of the executive branch. Taft’s Oval Office helped make the
+              presidency more modern, organized, and visually identifiable.
+            </p>
+            <p class="credit">Portrait of William Howard Taft, Public Domain.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="dimensions" class="tab-content">
+    <section class="lang-he">
+      <h2>מידות מדויקות ומבנה אדריכלי</h2>
+      <p>
+        המידות של חדר הסגלגל חשובות משום שהן מסבירות את האופן שבו החדר משפיע על הצופה. זהו אינו אולם עצום,
+        אלא משרד גדול, מדוד ומאוזן. הוא גדול מספיק כדי לארח פגישות רשמיות, אך קטן מספיק כדי לשמור על תחושת
+        אינטימיות ושליטה. כל פריט בו נראה בצילום, וכל שינוי בעיצוב משנה את האווירה.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-content">
+            <h3>חדר הסגלגל</h3>
+            <ul>
+              <li><strong>ציר ארוך:</strong> 35 רגל ו־10 אינץ׳ / 10.9 מטר</li>
+              <li><strong>ציר קצר:</strong> 29 רגל / 8.8 מטר</li>
+              <li><strong>גובה תקרה:</strong> 18 רגל ו־6 אינץ׳ / 5.6 מטר</li>
+              <li><strong>נקודת תחילת קימור התקרה:</strong> 16 רגל ו־7 אינץ׳ / 5.0 מטר</li>
+            </ul>
+            <p>
+              המבנה האליפטי מאפשר לחדר להיראות רחב וזורם יותר ממשרד מלבני רגיל. הקימור יוצר תחושה של המשכיות
+              ומרכך את ההיררכיה, אך עדיין שומר על ציר ברור בין השולחן, החלונות והאח.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>שולחן Resolute</h3>
+            <ul>
+              <li><strong>גובה:</strong> כ־33 אינץ׳ / 84 ס״מ</li>
+              <li><strong>אורך:</strong> 72 אינץ׳ / 183 ס״מ</li>
+              <li><strong>עומק:</strong> 48 אינץ׳ / 122 ס״מ</li>
+              <li><strong>משקל:</strong> כ־1,300 ליברות / 590 ק״ג</li>
+            </ul>
+            <p>
+              מידותיו הגדולות של השולחן מחזקות את נוכחותו החזותית. הוא אינו רק משטח עבודה, אלא חפץ טקסי
+              שמופיע כמעט בכל צילום רשמי של הנשיא מאחורי שולחנו.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>The Broncho Buster</h3>
+            <ul>
+              <li><strong>גובה:</strong> 22¾ אינץ׳ / 57.8 ס״מ</li>
+              <li><strong>רוחב:</strong> 18¾ אינץ׳ / 47.6 ס״מ</li>
+              <li><strong>עומק:</strong> 14 אינץ׳ / 35.6 ס״מ</li>
+              <li><strong>חומר:</strong> ברונזה</li>
+            </ul>
+            <p>
+              זהו פסל קטן יחסית, אך מלא תנועה. גודלו מאפשר להציב אותו בחדר כאובייקט סמלי מבלי להשתלט על החלל,
+              אך הדימוי שלו – רוכב המתמודד עם סוס פראי – מעניק לו עוצמה חזותית רבה.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>החלונות:</strong> בחדר הסגלגל יש שלושה חלונות גדולים הפונים למדשאה הדרומית. לא מצאתי מקור רשמי אמין
+        שמפרסם את מידות החלונות המדויקות, ולכן עדיף לא להכניס מספרים לא מאומתים לאתר.
+      </div>
+    </section>
+
+    <section class="lang-en">
+      <h2>Exact Dimensions and Architectural Structure</h2>
+      <p>
+        The dimensions of the Oval Office help explain its visual power. It is not a vast hall, but a carefully balanced
+        working room: large enough for formal meetings, small enough to preserve intimacy and control.
+      </p>
+
+      <div class="grid">
+        <div class="card"><div class="card-content">
+          <h3>The Oval Office</h3>
+          <ul>
+            <li><strong>Long axis:</strong> 35 ft 10 in / 10.9 m</li>
+            <li><strong>Short axis:</strong> 29 ft / 8.8 m</li>
+            <li><strong>Ceiling height:</strong> 18 ft 6 in / 5.6 m</li>
+            <li><strong>Line of rise:</strong> 16 ft 7 in / 5.0 m</li>
+          </ul>
+          <p>The oval structure makes the room feel fluid, continuous, and visually balanced.</p>
+        </div></div>
+
+        <div class="card"><div class="card-content">
+          <h3>The Resolute Desk</h3>
+          <ul>
+            <li><strong>Height:</strong> about 33 in / 84 cm</li>
+            <li><strong>Length:</strong> 72 in / 183 cm</li>
+            <li><strong>Depth:</strong> 48 in / 122 cm</li>
+            <li><strong>Weight:</strong> about 1,300 lb / 590 kg</li>
+          </ul>
+          <p>The desk’s physical mass reinforces its symbolic presence.</p>
+        </div></div>
+
+        <div class="card"><div class="card-content">
+          <h3>The Broncho Buster</h3>
+          <ul>
+            <li><strong>Height:</strong> 22¾ in / 57.8 cm</li>
+            <li><strong>Width:</strong> 18¾ in / 47.6 cm</li>
+            <li><strong>Depth:</strong> 14 in / 35.6 cm</li>
+            <li><strong>Medium:</strong> Bronze</li>
+          </ul>
+          <p>A compact sculpture with powerful visual motion and symbolic energy.</p>
+        </div></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="furniture" class="tab-content">
+    <section class="lang-he">
+      <h2>הריהוט המרכזי – היסטוריה, מקורות ומשמעות</h2>
+
+      <div class="grid">
+        <div class="card">
+          <img src="images/resolute-desk-front-view.png" alt="שולחן Resolute" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>שולחן Resolute</h3>
+            <div class="fact-box">
+              <p><strong>מידות:</strong> גובה כ־84 ס״מ, אורך 183 ס״מ, עומק 122 ס״מ, משקל כ־590 ק״ג.</p>
+              <p><strong>חומר:</strong> עץ אלון מספינת HMS Resolute.</p>
+              <p><strong>שנת יצירה:</strong> 1880.</p>
+            </div>
+            <p>
+              שולחן Resolute הוא אחד החפצים ההיסטוריים החשובים ביותר בבית הלבן. מקורו בספינת המחקר הבריטית
+              HMS Resolute, שננטשה באזור הארקטי ונמצאה על ידי ספינה אמריקאית. החזרת הספינה לבריטניה הפכה
+              למחווה דיפלומטית, וכאשר פורקה הספינה, נבנה מעציה שולחן שהוענק לארצות הברית.
+            </p>
+            <p>
+              השולחן ניתן לנשיא רתרפורד ב. הייז בשנת 1880 על ידי המלכה ויקטוריה. מאז הוא הפך לסמל של קשר
+              היסטורי בין ארצות הברית לבריטניה, אך גם לסמל של יציבות, אחריות והמשכיות נשיאותית.
+            </p>
+            <p>
+              כוחו של השולחן נובע מכך שהוא נושא סיפור: מסע ימי, חילוץ, דיפלומטיה, מתנה מלכותית, ולבסוף
+              שימוש בחדר שבו מתקבלות החלטות מדיניות מן החשובות בעולם.
+            </p>
+            <p class="credit">קרדיט: צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/oval-office-front-view.png" alt="אזור הישיבה בחדר הסגלגל" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>ספות, כורסאות ושולחנות צד</h3>
+            <div class="fact-box">
+              <p><strong>מידות:</strong> משתנות בין ממשלים; אין מידה אחת קבועה.</p>
+              <p><strong>תפקיד:</strong> פגישות, שיחות, אירוח, צילום רשמי ודיפלומטיה רכה.</p>
+            </div>
+            <p>
+              אזור הישיבה בחדר הסגלגל חשוב לא פחות משולחן הנשיא. בעוד השולחן מדגיש סמכות, היררכיה וחתימה
+              על מסמכים, אזור הישיבה מדגיש שיחה, קירבה, דיפלומטיה ומפגש אנושי.
+            </p>
+            <p>
+              בדרך כלל האזור כולל ספות או כורסאות משני צדדים, שולחן קפה נמוך, ולעיתים שולחנות צד עם מנורות,
+              פרחים, תמונות משפחתיות או חפצים אישיים. סידור זה מאפשר לנשיא להיראות נגיש יותר, במיוחד בפגישות
+              עם אורחים או מנהיגים זרים.
+            </p>
+            <p>
+              בחירת הצבעים והבדים משתנה בין נשיאים. נשיא אחד עשוי לבחור צבעים חמים וזהובים כדי לשדר מסורת
+              ויוקרה, ואחר עשוי לבחור גוונים בהירים ונקיים כדי לשדר מודרניות ופשטות.
+            </p>
+            <p class="credit">קרדיט: צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lang-en">
+      <h2>Main Furniture – History, Origins, and Meaning</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="images/resolute-desk-front-view.png" alt="Resolute Desk" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>The Resolute Desk</h3>
+            <p><strong>Dimensions:</strong> about 84 cm high, 183 cm long, 122 cm deep, and about 590 kg.</p>
+            <p>
+              The Resolute Desk was made from the oak timbers of HMS Resolute and presented to President Rutherford B.
+              Hayes by Queen Victoria in 1880. It carries a story of exploration, rescue, diplomacy, and presidential continuity.
+            </p>
+            <p>
+              Its symbolic strength comes from the fact that it is both a working desk and a diplomatic artifact.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/oval-office-front-view.png" alt="Oval Office seating area" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>Sofas, Armchairs, and Side Tables</h3>
+            <p><strong>Dimensions:</strong> not fixed; these items change between administrations.</p>
+            <p>
+              The seating area expresses conversation, hospitality, diplomacy, and accessibility. While the desk emphasizes
+              authority, the seating area creates a more human and conversational atmosphere.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="decorations" class="tab-content">
+    <section class="lang-he">
+      <h2>הקישוטים המרכזיים – היסטוריה, מקורות ומסר סמלי</h2>
+
+      <div class="grid">
+        <div class="card">
+          <img src="images/oval-office-presidential-seal-carpet.png" alt="שטיח חדר הסגלגל" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>השטיח הנשיאותי</h3>
+            <div class="fact-box">
+              <p><strong>מידות:</strong> משתנות לפי העיצוב והתקופה.</p>
+              <p><strong>תפקיד:</strong> מרכז חזותי, סמל נשיאותי, צבע ואווירה.</p>
+            </div>
+            <p>
+              השטיח הוא אחד הפריטים הגדולים ביותר בחדר ולכן יש לו השפעה עצומה על האווירה. הוא ממוקם במרכז,
+              מתחת לאזור הישיבה וההליכה, ונראה כמעט בכל צילום רחב של חדר הסגלגל.
+            </p>
+            <p>
+              ברוב העיצובים מופיע בו סמל נשיא ארצות הברית. לעיתים נוספו לו צבעים, מוטיבים או ציטוטים שנבחרו
+              במיוחד על ידי הנשיא. כך השטיח הופך לא רק לפריט עיצובי, אלא להצהרה חזותית על ערכי הממשל.
+            </p>
+            <p>
+              השטיחים משתנים בין נשיאים ולכן הם כלי מצוין להבנת האופי החזותי של כל ממשל: רשמי, חם, שמרני,
+              מודרני, בהיר, כהה, טקסי או אישי.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/oval-office-fireplace-front-view.png" alt="האח בחדר הסגלגל" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>האח והקיר שמעליו</h3>
+            <p>
+              האח הוא מוקד אדריכלי מרכזי בחדר. הוא מוסיף תחושת מסורת, חמימות וביתיות, אך גם משמש כקיר תצוגה
+              סמלי. מעל האח מוצגים לעיתים דיוקנאות נשיאותיים או יצירות אמנות בעלות משמעות פוליטית והיסטורית.
+            </p>
+            <p>
+              מכיוון שהאח נמצא מול אזור השולחן, כל פריט שמוצג מעליו מקבל נוכחות חזותית חזקה. הוא מופיע
+              בפגישות, בצילומים רשמיים וברגעים תקשורתיים, ולכן הבחירה בו איננה מקרית.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/andrew-jackson-portrait-thomas-sully.png" alt="דיוקן אנדרו ג׳קסון" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>דיוקן אנדרו ג׳קסון</h3>
+            <p>
+              דיוקנאות בחדר הסגלגל הם הצהרות היסטוריות. כאשר נשיא מציב דיוקן של נשיא קודם, הוא יוצר קשר
+              חזותי בינו לבין מסורת מסוימת של מנהיגות.
+            </p>
+            <p>
+              אנדרו ג׳קסון הוא דמות טעונה בהיסטוריה האמריקאית. הוא מזוהה עם פופוליזם, נשיאות תקיפה והרחבת
+              כוח הביצוע, אך גם עם מחלוקות קשות, במיוחד ביחס למדיניות כלפי ילידים אמריקאים.
+            </p>
+            <p>
+              לכן הצבת דיוקנו בחדר הסגלגל אינה רק בחירה אסתטית; היא יכולה לשדר זיקה לסגנון מנהיגות עוצמתי,
+              ישיר ולעיתים שנוי במחלוקת.
+            </p>
+            <p class="credit">דיוקן אנדרו ג׳קסון, מאת Thomas Sully, נחלת הכלל.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/the-broncho-buster-remington-met-1895.jpg" alt="The Broncho Buster" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>The Broncho Buster</h3>
+            <div class="fact-box">
+              <p><strong>אמן:</strong> Frederic Remington</p>
+              <p><strong>שנת יצירה:</strong> 1895; היציקה במוזיאון המטרופוליטן: 1918</p>
+              <p><strong>חומר:</strong> ברונזה</p>
+              <p><strong>מידות:</strong> 57.8 × 47.6 × 35.6 ס״מ</p>
+            </div>
+            <p>
+              The Broncho Buster הוא אחד הדימויים הידועים ביותר של המערב האמריקאי. הפסל מתאר רוכב המנסה
+              לשלוט בסוס פראי ברגע של תנועה, סכנה ומאמץ. זהו דימוי דרמטי של שליטה, אנרגיה וגבול.
+            </p>
+            <p>
+              פרדריק רמינגטון התמחה בדימויי המערב, קאובויים, סוסים, חיילים וחיי גבול. הפסל הפך לאחד הסמלים
+              המובהקים של המיתוס האמריקאי על ההתפשטות מערבה.
+            </p>
+            <p>
+              בחדר הסגלגל, פסל כזה יכול לשדר נחישות, פעולה, כוח, התמודדות עם אתגר ותפיסה של אמריקה כמדינה
+              הפועלת ללא פחד מול גבולות חדשים.
+            </p>
+            <p class="credit">The Metropolitan Museum of Art, Open Access / CC0.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/winston-churchill-bust-epstein.png" alt="פסל ראש של וינסטון צ׳רצ׳יל" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>פסל ראש של וינסטון צ׳רצ׳יל</h3>
+            <p>
+              פסל ראש של וינסטון צ׳רצ׳יל מסמל את הקשר ההיסטורי בין ארצות הברית לבריטניה. צ׳רצ׳יל מזוהה
+              עם מנהיגות בזמן משבר, עם מלחמת העולם השנייה ועם הברית האטלנטית.
+            </p>
+            <p>
+              הצבת דמותו בחדר הסגלגל יוצרת מסר של המשכיות בין הנשיאות האמריקאית לבין מסורת רחבה יותר של
+              הנהגה מערבית. היא מזכירה תקופות שבהן הנהגה פוליטית נתפסה כעמידה מול איום עולמי.
+            </p>
+            <p>
+              לכן הפסל אינו רק מחווה לאדם מסוים; הוא מייצג ברית, זיכרון מלחמתי, עמידה במשבר וקשר תרבותי
+              עמוק בין שתי מדינות.
+            </p>
+            <p class="credit">פסל ראש של צ׳רצ׳יל, מאת Jacob Epstein, נחלת הכלל / Wikimedia Commons.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lang-en">
+      <h2>Main Decorations – History, Origins, and Symbolic Meaning</h2>
+      <p>
+        The decorations of the Oval Office are never neutral. They form a symbolic language of leadership,
+        memory, national identity, diplomacy, and political self-presentation.
+      </p>
+      <p>
+        The presidential carpet, the fireplace wall, portraits, and sculptures all help define how a president wants
+        the room—and by extension the presidency—to be seen.
+      </p>
+    </section>
+  </div>
+
+  <div id="timeline" class="tab-content">
+    <section class="lang-he">
+      <h2>ציר זמן אינטראקטיבי – אירועים מכוננים</h2>
+      <p>
+        חדר הסגלגל הוא לא רק חלל אדריכלי אלא גם במה היסטורית. אירועים מכוננים רבים נקשרו אליו:
+        החלטות בזמן מלחמה, נאומים לאומה, משברים חוקתיים, הישגים טכנולוגיים ורגעי אבל לאומי.
+      </p>
+
+      <div class="timeline-buttons">
+        <button class="active" onclick="showEvent(event, 'event1909')">1909</button>
+        <button onclick="showEvent(event, 'event1934')">1934</button>
+        <button onclick="showEvent(event, 'event1962')">1962</button>
+        <button onclick="showEvent(event, 'event1969')">1969</button>
+        <button onclick="showEvent(event, 'event1974')">1974</button>
+        <button onclick="showEvent(event, 'event1986')">1986</button>
+        <button onclick="showEvent(event, 'event2001')">2001</button>
+        <button onclick="showEvent(event, 'event2011')">2011</button>
+      </div>
+
+      <div id="event1909" class="timeline-detail timeline-event">
+        <h3>1909 – בניית חדר הסגלגל הראשון</h3>
+        <p>
+          בתקופת ויליאם הווארד טאפט נבנה חדר הסגלגל הראשון באגף המערבי. האירוע סימן שלב חשוב במעבר
+          של הנשיאות למבנה עבודה מודרני ומאורגן יותר.
+        </p>
+      </div>
+
+      <div id="event1934" class="timeline-detail timeline-event" style="display:none;">
+        <h3>1934 – המיקום המודרני</h3>
+        <p>
+          בתקופת פרנקלין דלאנו רוזוולט נבנה חדר הסגלגל במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי.
+          שינוי זה חיבר את החדר בצורה טובה יותר למדשאה הדרומית, לגן הוורדים ולמרכז הפעילות הנשיאותית.
+        </p>
+      </div>
+
+      <div id="event1962" class="timeline-detail timeline-event" style="display:none;">
+        <h3>1962 – משבר הטילים בקובה</h3>
+        <p>
+          בימי ג׳ון פ. קנדי עמד העולם בפני סכנה גרעינית ממשית. חדר הסגלגל הפך לסמל של קבלת החלטות תחת לחץ
+          קיצוני ושל תקשורת נשיאותית בזמן משבר בינלאומי.
+        </p>
+      </div>
+
+      <div id="event1969" class="timeline-detail timeline-event" style="display:none;">
+        <h3>1969 – אפולו 11</h3>
+        <p>
+          לאחר הנחיתה על הירח, הנשיא ריצ׳רד ניקסון שוחח עם האסטרונאוטים. האירוע חיבר את הבית הלבן לאחד
+          ההישגים הגדולים ביותר בתולדות המדע והטכנולוגיה.
+        </p>
+      </div>
+
+      <div id="event1974" class="timeline-detail timeline-event" style="display:none;">
+        <h3>1974 – התפטרות ניקסון</h3>
+        <p>
+          נאום ההתפטרות של ריצ׳רד ניקסון סימן רגע חוקתי מכריע. החדר הפך לבמה שבה נשיא אמריקאי הכיר
+          בפומבי בסיום כהונתו, והדגיש את עליונות החוק והחוקה.
+        </p>
+      </div>
+
+      <div id="event1986" class="timeline-detail timeline-event" style="display:none;">
+        <h3>1986 – אסון צ׳לנג׳ר</h3>
+        <p>
+          לאחר אסון מעבורת החלל צ׳לנג׳ר, רונלד רייגן פנה לאומה בדברי נחמה. האירוע הראה את תפקידו של
+          החדר לא רק כמקום של החלטות, אלא גם כמקום של אבל, אחדות ונחמה לאומית.
+        </p>
+      </div>
+
+      <div id="event2001" class="timeline-detail timeline-event" style="display:none;">
+        <h3>2001 – לאחר פיגועי 11 בספטמבר</h3>
+        <p>
+          אחרי פיגועי 11 בספטמבר הפך הבית הלבן למרכז של מסרים על ביטחון, מלחמה, אבל ואחדות. כל נאום
+          ותמונה מהחדר קיבלו משמעות לאומית ובינלאומית.
+        </p>
+      </div>
+
+      <div id="event2011" class="timeline-detail timeline-event" style="display:none;">
+        <h3>2011 – הודעת אובמה על מבצע בן לאדן</h3>
+        <p>
+          הנשיא ברק אובמה הודיע לציבור על המבצע שבו נהרג אוסאמה בן לאדן. ההודעה הפכה לאחד הרגעים הביטחוניים
+          הבולטים של המאה ה־21.
+        </p>
+      </div>
+    </section>
+
+    <section class="lang-en">
+      <h2>Interactive Timeline – Defining Events</h2>
+      <p>
+        The Oval Office is also a historical stage: a place linked to crises, national addresses, diplomatic moments,
+        constitutional events, and symbolic photographs.
+      </p>
+    </section>
+  </div>
+
+  <div id="about" class="tab-content">
+    <section class="lang-he">
+      <h2>אודות האתר</h2>
+      <img class="profile-img" src="images/ram-profile.jpg" alt="תמונת פרופיל" onclick="openLightbox(this)">
+      <p>
+        אתר זה נבנה כפרויקט ידע היסטורי־חזותי בעברית על חדר הסגלגל. מטרתו אינה רק להציג עובדות,
+        אלא ליצור חוויית למידה: להבין כיצד חדר אחד יכול להכיל בתוכו אדריכלות, פוליטיקה, תקשורת,
+        אמנות, דיפלומטיה וסמליות לאומית.
+      </p>
+      <p>
+        האתר משלב תמונות חופשיות, קרדיטים מסודרים, שמות קבצים שמתאימים לגיטהאב, טקסטים בעברית ובאנגלית,
+        וציר זמן אינטראקטיבי. הוא מתאים לשימוש כאתר לימודי, פרויקט אישי, בסיס למוזיאון דיגיטלי או
+        עמוד מידע היסטורי.
+      </p>
+    </section>
+
+    <section class="lang-en">
+      <h2>About This Site</h2>
+      <img class="profile-img" src="images/ram-profile.jpg" alt="Profile image" onclick="openLightbox(this)">
+      <p>
+        This website was created as a visual-historical knowledge project about the Oval Office. Its goal is not only
+        to present facts, but to create a learning experience that shows how one room can contain architecture,
+        politics, media, art, diplomacy, and national symbolism.
+      </p>
+    </section>
+  </div>
+
+  <div id="sources" class="tab-content">
+    <section class="lang-he">
+      <h2>מקורות וקרדיטים</h2>
+      <p>
+        דף זה מרכז את מקורות המידע ואת קרדיטי התמונות. גם כאשר תמונה נמצאת בנחלת הכלל או ב־CC0,
+        מתן קרדיט הוא דרך מקצועית ושקופה להציג את המקור.
+      </p>
+
+      <ul>
+        <li>White House Historical Association – מידות חדר הסגלגל והיסטוריה של הבית הלבן.</li>
+        <li>Britannica – מידות ותיאור שולחן Resolute.</li>
+        <li>The Metropolitan Museum of Art – מידע ומידות על The Broncho Buster.</li>
+        <li>Wikimedia Commons – תמונות היסטוריות בנחלת הכלל.</li>
+        <li>National Archives – חומרים ממשלתיים ותמונות היסטוריות.</li>
+        <li>Official White House photographs – תמונות ממשלתיות רשמיות, כאשר הן בנחלת הכלל.</li>
+      </ul>
+
+      <h3>קרדיטים לתמונות</h3>
+      <ul>
+        <li>George Washington portrait, Gilbert Stuart, Public Domain.</li>
+        <li>William Howard Taft portrait, Public Domain.</li>
+        <li>Oval Office official photographs, U.S. Government / White House, Public Domain.</li>
+        <li>Resolute Desk, official White House / U.S. Government photograph, Public Domain.</li>
+        <li>Andrew Jackson portrait, Thomas Sully, Public Domain.</li>
+        <li>The Broncho Buster, Frederic Remington, 1895, The Metropolitan Museum of Art, CC0.</li>
+        <li>Winston Churchill bust, Jacob Epstein, Public Domain / Wikimedia Commons.</li>
+        <li>Profile image: ram-profile.jpg, supplied by the site creator.</li>
+      </ul>
+    </section>
+
+    <section class="lang-en">
+      <h2>Sources and Credits</h2>
+      <ul>
+        <li>White House Historical Association – Oval Office dimensions and history.</li>
+        <li>Britannica – Resolute Desk dimensions and description.</li>
+        <li>The Metropolitan Museum of Art – The Broncho Buster information and dimensions.</li>
+        <li>Wikimedia Commons – public-domain historical images.</li>
+        <li>National Archives – public-domain government materials.</li>
+        <li>Official White House photographs – U.S. Government / Public Domain where applicable.</li>
+      </ul>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  חדר הסגלגל – מוזיאון דיגיטלי היסטורי
+</footer>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span>&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openTab(event, tabId) {
+    document.querySelectorAll(".tab-content").forEach(function(content) {
+      content.classList.remove("active");
+    });
+
+    document.querySelectorAll(".tab-button").forEach(function(button) {
+      button.classList.remove("active");
+    });
+
+    document.getElementById(tabId).classList.add("active");
+    event.currentTarget.classList.add("active");
+  }
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "he" ? "rtl" : "ltr";
+
+    document.querySelectorAll(".lang-he").forEach(function(el) {
+      el.style.display = lang === "he" ? "" : "none";
+    });
+
+    document.querySelectorAll(".lang-en").forEach(function(el) {
+      el.style.display = lang === "en" ? "" : "none";
+    });
+  }
+
+  function showEvent(event, eventId) {
+    document.querySelectorAll(".timeline-event").forEach(function(item) {
+      item.style.display = "none";
+    });
+
+    document.querySelectorAll(".timeline-buttons button").forEach(function(button) {
+      button.classList.remove("active");
+    });
+
+    document.getElementById(eventId).style.display = "block";
+    event.currentTarget.classList.add("active");
+  }
+
+  function openLightbox(img) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = img.src;
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+
+  setLanguage("he");
+</script>
+
+</body>
+</html>
