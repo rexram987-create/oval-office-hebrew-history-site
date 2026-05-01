@@ -1,316 +1,445 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>חדר הסגלגל – מוזיאון דיגיטלי</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חדר הסגלגל – מוזיאון דיגיטלי</title>
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
-      line-height: 1.9;
-    }
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0f172a;
+  color:#f8fafc;
+  line-height:1.9;
+}
 
-    header {
-      min-height: 82vh;
-      background:
-        linear-gradient(rgba(2, 6, 23, 0.70), rgba(2, 6, 23, 0.93)),
-        url("images/oval-office-front-view.png") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 20px;
-    }
+header{
+  min-height:70vh;
+  background:linear-gradient(rgba(2,6,23,.75),rgba(2,6,23,.95)),
+  url("images/oval-office-front-view.png") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
 
-    header h1 {
-      font-size: clamp(44px, 8vw, 82px);
-      margin: 0;
-      color: #ffffff;
-    }
+header h1{font-size:64px;margin:0}
+header p{max-width:900px;margin:20px auto;font-size:22px;color:#dbeafe}
 
-    header p {
-      max-width: 1000px;
-      margin: 24px auto 0;
-      color: #dbeafe;
-      font-size: clamp(18px, 2vw, 24px);
-    }
+main{max-width:1200px;margin:auto;padding:30px 18px}
 
-    .language-box {
-      background: #020617;
-      padding: 14px;
-      text-align: center;
-      border-bottom: 1px solid #334155;
-    }
+input[type="radio"]{display:none}
 
-    .language-box button,
-    .tab-button,
-    .timeline-buttons button {
-      background: #1e293b;
-      color: #e0f2fe;
-      border: 1px solid #475569;
-      padding: 10px 18px;
-      border-radius: 999px;
-      cursor: pointer;
-      margin: 4px;
-      font-weight: bold;
-      transition: 0.25s;
-    }
+.tabs{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  background:#020617;
+  padding:14px;
+  border-bottom:1px solid #334155;
+}
 
-    .language-box button:hover,
-    .tab-button:hover,
-    .tab-button.active,
-    .timeline-buttons button:hover,
-    .timeline-buttons button.active {
-      background: #38bdf8;
-      color: #020617;
-    }
+.tabs label{
+  background:#1e293b;
+  color:#e0f2fe;
+  border:1px solid #475569;
+  padding:10px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:bold;
+  white-space:nowrap;
+}
 
-    .tabs {
-      background: #020617;
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 12px;
-      border-bottom: 1px solid #334155;
-    }
+#tab-home:checked ~ .tabs label[for="tab-home"],
+#tab-dimensions:checked ~ .tabs label[for="tab-dimensions"],
+#tab-furniture:checked ~ .tabs label[for="tab-furniture"],
+#tab-decorations:checked ~ .tabs label[for="tab-decorations"],
+#tab-timeline:checked ~ .tabs label[for="tab-timeline"],
+#tab-about:checked ~ .tabs label[for="tab-about"],
+#tab-sources:checked ~ .tabs label[for="tab-sources"]{
+  background:#38bdf8;
+  color:#020617;
+}
 
-    main {
-      max-width: 1250px;
-      margin: auto;
-      padding: 30px 18px;
-    }
+.page{display:none}
 
-    .tab-content {
-      display: none;
-    }
+#tab-home:checked ~ main #home,
+#tab-dimensions:checked ~ main #dimensions,
+#tab-furniture:checked ~ main #furniture,
+#tab-decorations:checked ~ main #decorations,
+#tab-timeline:checked ~ main #timeline,
+#tab-about:checked ~ main #about,
+#tab-sources:checked ~ main #sources{
+  display:block;
+}
 
-    .tab-content.active {
-      display: block;
-    }
+section{
+  background:#111827;
+  border:1px solid #334155;
+  border-radius:24px;
+  padding:30px;
+  margin-bottom:30px;
+}
 
-    section {
-      background: #111827;
-      border: 1px solid #334155;
-      border-radius: 24px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 18px 38px rgba(0,0,0,0.24);
-    }
+h2{color:#38bdf8;font-size:34px;margin-top:0}
+h3{color:#facc15;font-size:24px}
+p,li{font-size:18px}
 
-    h2 {
-      margin-top: 0;
-      color: #38bdf8;
-      font-size: clamp(28px, 4vw, 38px);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px;
+}
 
-    h3 {
-      color: #facc15;
-      margin-top: 28px;
-      font-size: 24px;
-    }
+.card{
+  background:#1e293b;
+  border:1px solid #475569;
+  border-radius:22px;
+  overflow:hidden;
+}
 
-    p { font-size: 18px; }
+.card img{
+  width:100%;
+  height:310px;
+  object-fit:cover;
+}
 
-    ul {
-      padding-right: 24px;
-      padding-left: 24px;
-    }
+.card-content{padding:20px}
 
-    li {
-      margin-bottom: 8px;
-      font-size: 17px;
-    }
+.fact-box{
+  background:#020617;
+  border:1px solid #334155;
+  border-radius:16px;
+  padding:16px;
+  margin:16px 0;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-    }
+.fact-box strong{color:#facc15}
 
-    .card {
-      background: #1e293b;
-      border: 1px solid #475569;
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
-    }
+.profile-img{
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #38bdf8;
+  display:block;
+  margin:auto;
+}
 
-    .card img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
-      cursor: pointer;
-    }
-
-    .card-content {
-      padding: 20px;
-    }
-
-    .wide-img {
-      width: 100%;
-      max-height: 620px;
-      object-fit: cover;
-      border-radius: 20px;
-      cursor: pointer;
-      border: 1px solid #475569;
-      display: block;
-    }
-
-    .profile-img {
-      width: 235px;
-      height: 235px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #38bdf8;
-      display: block;
-      margin: 0 auto 22px;
-      cursor: pointer;
-    }
-
-    .credit {
-      font-size: 13px;
-      color: #94a3b8;
-      margin-top: 12px;
-      border-top: 1px solid #334155;
-      padding-top: 10px;
-    }
-
-    .note {
-      background: #0f172a;
-      border-right: 5px solid #38bdf8;
-      padding: 18px;
-      border-radius: 16px;
-      margin: 22px 0;
-    }
-
-    .fact-box {
-      background: #020617;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 18px;
-      margin: 18px 0;
-    }
-
-    .fact-box strong {
-      color: #facc15;
-    }
-
-    .timeline-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .timeline-detail {
-      background: #1e293b;
-      border: 1px solid #475569;
-      border-radius: 18px;
-      padding: 24px;
-      min-height: 240px;
-    }
-
-    .lang-en {
-      display: none;
-    }
-
-    footer {
-      background: #020617;
-      text-align: center;
-      padding: 30px;
-      color: #94a3b8;
-    }
-
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    #lightbox img {
-      max-width: 95%;
-      max-height: 90vh;
-      border-radius: 18px;
-    }
-
-    #lightbox span {
-      position: absolute;
-      top: 20px;
-      left: 30px;
-      font-size: 42px;
-      color: white;
-      cursor: pointer;
-    }
-
-    @media (max-width: 700px) {
-      section { padding: 22px; }
-      .card img { height: 250px; }
-    }
-  </style>
+.credit{
+  font-size:13px;
+  color:#94a3b8;
+  border-top:1px solid #334155;
+  padding-top:10px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="lang-he">
+  <div>
     <h1>חדר הסגלגל</h1>
     <p>
-      מוזיאון דיגיטלי בעברית על אחד החדרים המשפיעים בעולם: ההיסטוריה, האדריכלות, הריהוט,
-      הקישוטים, הסמלים והאירועים המכוננים של משרד נשיא ארצות הברית.
-    </p>
-  </div>
-
-  <div class="lang-en">
-    <h1>The Oval Office</h1>
-    <p>
-      A digital museum about one of the most influential rooms in the world: the history, architecture,
-      furniture, decorations, symbols, and defining events of the office of the President of the United States.
+      מוזיאון דיגיטלי על ההיסטוריה, האדריכלות, הריהוט, הקישוטים והאירועים המרכזיים
+      של משרד נשיא ארצות הברית.
     </p>
   </div>
 </header>
 
-<div class="language-box">
-  <button onclick="setLanguage('he')">עברית</button>
-  <button onclick="setLanguage('en')">English</button>
-</div>
+<input type="radio" name="tabs" id="tab-home" checked>
+<input type="radio" name="tabs" id="tab-dimensions">
+<input type="radio" name="tabs" id="tab-furniture">
+<input type="radio" name="tabs" id="tab-decorations">
+<input type="radio" name="tabs" id="tab-timeline">
+<input type="radio" name="tabs" id="tab-about">
+<input type="radio" name="tabs" id="tab-sources">
 
 <nav class="tabs">
-  <button class="tab-button active" onclick="openTab('home', this)">ראשי / Home</button>
-  <button class="tab-button" onclick="openTab('dimensions', this)">מידות / Dimensions</button>
-  <button class="tab-button" onclick="openTab('furniture', this)">ריהוט / Furniture</button>
-  <button class="tab-button" onclick="openTab('decorations', this)">קישוטים / Decorations</button>
-  <button class="tab-button" onclick="openTab('timeline', this)">ציר זמן / Timeline</button>
-  <button class="tab-button" onclick="openTab('about', this)">אודות / About</button>
-  <button class="tab-button" onclick="openTab('sources', this)">מקורות / Sources</button>
+  <label for="tab-home">ראשי</label>
+  <label for="tab-dimensions">מידות</label>
+  <label for="tab-furniture">ריהוט</label>
+  <label for="tab-decorations">קישוטים</label>
+  <label for="tab-timeline">ציר זמן</label>
+  <label for="tab-about">אודות</label>
+  <label for="tab-sources">מקורות</label>
 </nav>
 
 <main>
 
-  <div id="home" class="tab-content active">
-    <section class="lang-he">
-      <h2>עמוד ראשי – מבוא אולטרה מורחב</h2>
-      <p>
-        חדר הסגלגל הוא אחד החללים הפוליטיים המפורסמים ביותר בעולם המודרני. לכאורה מדובר במשרד עבודה,
-        אך בפועל זהו חלל שמרכז בתוכו היסטוריה, אדריכלות, תקשורת, סמליות לאומית ודיפלומטיה בינלאומית.
-        כאשר נשיא ארצות הברית יושב מאחורי שולחן Resolute, חותם על חוק, מקבל מנהיג זר או נושא נאום לאומה,
-        החדר עצמו הופך לחלק בלתי נפרד מן המסר.
-      </p>
+<div id="home" class="page">
+<section>
+<h2>עמוד ראשי – מבוא מורחב</h2>
+<p>
+חדר הסגלגל הוא אחד החללים הפוליטיים המפורסמים בעולם. הוא משמש כמשרד העבודה הרשמי
+של נשיא ארצות הברית, אך בפועל הוא הרבה יותר ממשרד: זהו חלל סמלי, טקסי ותקשורתי,
+שבו מתקבלות החלטות מדיניות, נחתמים צווים, נערכות פגישות עם מנהיגים ונמסרים מסרים לאומה.
+</p>
+<p>
+הצורה האליפטית של החדר מעניקה לו תחושה של זרימה, איזון וסדר. כל פריט בחדר — השולחן,
+השטיח, הדיוקנאות, הפסלים והדגלים — נבחר בקפידה ומשקף מסר היסטורי או פוליטי.
+</p>
+<img src="images/oval-office-front-view.png" style="width:100%;border-radius:18px">
+</section>
 
-      <p>
-        האופן שבו החדר מצולם, הרקע שמופיע מאחורי הנשיא, הציורים שעל הקירות, הפסלים שעל השולחנות,
-        צבע השטיח, הווילונות, הדגלים ואפילו זווית הישיבה – כל אלה משמשים כשפה חזותית. זו שפה שאומרת:
-        כאן נמצא מרכז הכוח הביצועי של ארצות הברית. לכן חדר הסגלגל אינו רק מקום שבו מתקבלות החלטות;
-        הוא גם מקום שבו החלטות מוצגות לציבור ולעולם.
-      </p>
+<section>
+<h2>וושינגטון וטאפט</h2>
+<div class="grid">
+
+<div class="card">
+<img src="images/george-washington-portrait-gilbert-stuart.png">
+<div class="card-content">
+<h3>ג׳ורג׳ וושינגטון</h3>
+<p><strong>שנות חיים:</strong> 1732–1799</p>
+<p>
+וושינגטון לא עבד בחדר הסגלגל המודרני, אך בתקופתו התבססה המסורת של חללים אליפטיים
+לקבלות פנים רשמיות. צורה זו אפשרה טקסיות, תנועה מעגלית ואיזון בין סמכות לבין ערכים רפובליקניים.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/william-howard-taft-portrait.png">
+<div class="card-content">
+<h3>ויליאם הווארד טאפט</h3>
+<p><strong>שנות חיים:</strong> 1857–1930</p>
+<p>
+טאפט היה הנשיא שבתקופתו נבנה חדר הסגלגל הראשון באגף המערבי בשנת 1909.
+הוא הפך את הרעיון של משרד נשיאותי אליפטי לחלל עבודה מודרני וקבוע.
+</p>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+
+<div id="dimensions" class="page">
+<section>
+<h2>מידות מדויקות</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-content">
+<h3>חדר הסגלגל</h3>
+<ul>
+<li><strong>ציר ארוך:</strong> 35 רגל ו־10 אינץ׳ / 10.9 מטר</li>
+<li><strong>ציר קצר:</strong> 29 רגל / 8.8 מטר</li>
+<li><strong>גובה:</strong> 18 רגל ו־6 אינץ׳ / 5.6 מטר</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>שולחן Resolute</h3>
+<ul>
+<li><strong>גובה:</strong> כ־84 ס״מ</li>
+<li><strong>אורך:</strong> כ־183 ס״מ</li>
+<li><strong>עומק:</strong> כ־122 ס״מ</li>
+<li><strong>משקל:</strong> כ־590 ק״ג</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>The Broncho Buster</h3>
+<ul>
+<li><strong>גובה:</strong> 57.8 ס״מ</li>
+<li><strong>רוחב:</strong> 47.6 ס״מ</li>
+<li><strong>עומק:</strong> 35.6 ס״מ</li>
+<li><strong>חומר:</strong> ברונזה</li>
+</ul>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+
+<div id="furniture" class="page">
+<section>
+<h2>הריהוט המרכזי</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="images/resolute-desk-front-view.png">
+<div class="card-content">
+<h3>שולחן Resolute</h3>
+<div class="fact-box">
+<p><strong>שנת יצירה:</strong> 1880</p>
+<p><strong>חומר:</strong> עץ אלון מספינת HMS Resolute</p>
+<p><strong>מידות:</strong> 183 × 122 × 84 ס״מ בקירוב</p>
+</div>
+<p>
+שולחן Resolute נבנה מעצי הספינה הבריטית HMS Resolute והוענק לארצות הברית על ידי המלכה ויקטוריה.
+הוא הפך לאחד הסמלים החזקים ביותר של הנשיאות האמריקאית ושל הקשר ההיסטורי בין ארצות הברית לבריטניה.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/oval-office-front-view.png">
+<div class="card-content">
+<h3>ספות, כורסאות ושולחנות צד</h3>
+<p>
+פריטי הישיבה משתנים בין ממשלים. הם משמשים לפגישות רשמיות, שיחות דיפלומטיות וצילומים.
+בניגוד לשולחן הנשיא שמדגיש סמכות, אזור הישיבה מדגיש שיחה, קרבה ואירוח.
+</p>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+
+<div id="decorations" class="page">
+<section>
+<h2>קישוטים ופריטי אמנות</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="images/andrew-jackson-portrait-thomas-sully.png">
+<div class="card-content">
+<h3>דיוקן אנדרו ג׳קסון</h3>
+<div class="fact-box">
+<p><strong>אמן:</strong> Thomas Sully</p>
+<p><strong>שנות חיים:</strong> 1783–1872</p>
+<p><strong>שנת יצירה:</strong> 1824</p>
+</div>
+<p>
+הדיוקן נועד להציג את ג׳קסון כדמות ציבורית חזקה: איש צבא, מנהיג פוליטי ודמות לאומית.
+הצבת דיוקנאות של נשיאים קודמים בחדר הסגלגל יוצרת קשר בין הנשיא המכהן לבין מסורות הנהגה קודמות.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/the-broncho-buster-remington-met-1895.jpg">
+<div class="card-content">
+<h3>The Broncho Buster</h3>
+<div class="fact-box">
+<p><strong>אמן:</strong> Frederic Remington</p>
+<p><strong>שנות חיים:</strong> 1861–1909</p>
+<p><strong>שנת יצירה:</strong> 1895</p>
+<p><strong>חומר:</strong> ברונזה</p>
+</div>
+<p>
+הפסל נוצר כדי ללכוד את הדרמה והתנועה של המערב האמריקאי. בחדר הסגלגל הוא מסמל אנרגיה,
+גבול, יוזמה, כוח והתמודדות עם אתגרים.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/winston-churchill-bust-epstein.png">
+<div class="card-content">
+<h3>פסל ראש של וינסטון צ׳רצ׳יל</h3>
+<div class="fact-box">
+<p><strong>אמן:</strong> Sir Jacob Epstein</p>
+<p><strong>שנות חיים:</strong> 1880–1959</p>
+<p><strong>שנת יצירה:</strong> 1947</p>
+</div>
+<p>
+הפסל מסמל את הקשר ההיסטורי בין ארצות הברית לבריטניה, את מלחמת העולם השנייה ואת רעיון
+המנהיגות בעת משבר.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/oval-office-presidential-seal-carpet.png">
+<div class="card-content">
+<h3>השטיח הנשיאותי</h3>
+<p>
+השטיח משתנה בין נשיאים ומשמש כאחד המרכזים החזותיים של החדר. לעיתים מופיע בו סמל הנשיא,
+צבעים נבחרים וציטוטים המשקפים את ערכי הממשל.
+</p>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+
+<div id="timeline" class="page">
+<section>
+<h2>ציר זמן</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-content">
+<h3>1909</h3>
+<p>בתקופת טאפט נבנה חדר הסגלגל הראשון באגף המערבי.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>1934</h3>
+<p>בתקופת רוזוולט נבנה החדר במיקומו המוכר כיום.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>1962</h3>
+<p>משבר הטילים בקובה הפך את החדר לסמל של קבלת החלטות בזמן משבר גרעיני.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>1974</h3>
+<p>התפטרות ניקסון סימנה רגע חוקתי דרמטי בתולדות הנשיאות האמריקאית.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>2001</h3>
+<p>לאחר פיגועי 11 בספטמבר, החדר שימש מוקד למסרים נשיאותיים על ביטחון, מלחמה ואחדות.</p>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+
+<div id="about" class="page">
+<section>
+<h2>אודות</h2>
+<img class="profile-img" src="images/ram-profile.jpg">
+<p>
+אתר זה נבנה כפרויקט ידע היסטורי־חזותי על חדר הסגלגל, המשלב היסטוריה, אדריכלות,
+פוליטיקה, אמנות וסמליות לאומית.
+</p>
+</section>
+</div>
+
+<div id="sources" class="page">
+<section>
+<h2>מקורות וקרדיטים</h2>
+<ul>
+<li>White House Historical Association</li>
+<li>Britannica</li>
+<li>The Metropolitan Museum of Art</li>
+<li>Wikimedia Commons</li>
+<li>National Archives</li>
+</ul>
+</section>
+</div>
+
+</main>
+
+</body>
+</html>
