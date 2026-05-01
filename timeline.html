@@ -8,6 +8,8 @@
 
 <body>
 
+<header><h1>ציר זמן</h1></header>
+
 <nav>
 <a href="index.html">ראשי</a>
 <a href="timeline.html">ציר זמן</a>
@@ -16,11 +18,9 @@
 <main>
 
 <section>
-<h1>ציר זמן</h1>
 
 <div onclick="show(0)">1909</div>
 <div onclick="show(1)">1934</div>
-<div onclick="show(2)">1962</div>
 
 <p id="text"></p>
 
@@ -29,12 +29,7 @@
 </main>
 
 <script>
-const data=[
-"הקמת החדר",
-"מעבר למיקום החדש",
-"משבר קובה"
-];
-
+const data=["הקמת החדר","מעבר מיקום"];
 function show(i){
 document.getElementById("text").innerText=data[i];
 }
