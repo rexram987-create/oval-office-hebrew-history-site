@@ -48,8 +48,6 @@
       border-bottom: 1px solid #334155;
     }
 
-    button { font-family: inherit; }
-
     .language-box button,
     .tab-button,
     .timeline-buttons button {
@@ -88,8 +86,13 @@
       padding: 30px 18px;
     }
 
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
 
     section {
       background: #111827;
@@ -146,7 +149,9 @@
       cursor: pointer;
     }
 
-    .card-content { padding: 20px; }
+    .card-content {
+      padding: 20px;
+    }
 
     .wide-img {
       width: 100%;
@@ -180,15 +185,9 @@
     .note {
       background: #0f172a;
       border-right: 5px solid #38bdf8;
-      border-left: 5px solid transparent;
       padding: 18px;
       border-radius: 16px;
       margin: 22px 0;
-    }
-
-    html[dir="ltr"] .note {
-      border-right: 5px solid transparent;
-      border-left: 5px solid #38bdf8;
     }
 
     .fact-box {
@@ -199,7 +198,9 @@
       margin: 18px 0;
     }
 
-    .fact-box strong { color: #facc15; }
+    .fact-box strong {
+      color: #facc15;
+    }
 
     .timeline-buttons {
       display: flex;
@@ -216,7 +217,9 @@
       min-height: 240px;
     }
 
-    .lang-en { display: none; }
+    .lang-en {
+      display: none;
+    }
 
     footer {
       background: #020617;
@@ -284,13 +287,13 @@
 </div>
 
 <nav class="tabs">
-  <button class="tab-button active" onclick="openTab(event, 'home')">ראשי / Home</button>
-  <button class="tab-button" onclick="openTab(event, 'dimensions')">מידות / Dimensions</button>
-  <button class="tab-button" onclick="openTab(event, 'furniture')">ריהוט / Furniture</button>
-  <button class="tab-button" onclick="openTab(event, 'decorations')">קישוטים / Decorations</button>
-  <button class="tab-button" onclick="openTab(event, 'timeline')">ציר זמן / Timeline</button>
-  <button class="tab-button" onclick="openTab(event, 'about')">אודות / About</button>
-  <button class="tab-button" onclick="openTab(event, 'sources')">מקורות / Sources</button>
+  <button class="tab-button active" onclick="openTab('home', this)">ראשי / Home</button>
+  <button class="tab-button" onclick="openTab('dimensions', this)">מידות / Dimensions</button>
+  <button class="tab-button" onclick="openTab('furniture', this)">ריהוט / Furniture</button>
+  <button class="tab-button" onclick="openTab('decorations', this)">קישוטים / Decorations</button>
+  <button class="tab-button" onclick="openTab('timeline', this)">ציר זמן / Timeline</button>
+  <button class="tab-button" onclick="openTab('about', this)">אודות / About</button>
+  <button class="tab-button" onclick="openTab('sources', this)">מקורות / Sources</button>
 </nav>
 
 <main>
@@ -311,131 +314,3 @@
         כאן נמצא מרכז הכוח הביצועי של ארצות הברית. לכן חדר הסגלגל אינו רק מקום שבו מתקבלות החלטות;
         הוא גם מקום שבו החלטות מוצגות לציבור ולעולם.
       </p>
-
-      <p>
-        צורתו האליפטית של החדר מעניקה לו אופי ייחודי. חדר מלבני רגיל יוצר קווים חדים והיררכיה ברורה,
-        אך חדר אליפטי יוצר תחושה של תנועה, רכות, המשכיות ושיחה. אין בו פינות חדות שמקבעות את המבט,
-        ולכן העין נעה סביב החלל ומגיעה שוב ושוב אל המרכז: הנשיא, השולחן, הדגלים והאח.
-      </p>
-
-      <p>
-        לאורך השנים כל נשיא כמעט עיצב את החדר מחדש. השינויים אינם רק עניין אסתטי. הם משקפים סדרי עדיפויות,
-        תפיסת עולם, זיקה לדמויות היסטוריות, רצון לשדר ממלכתיות או עממיות, מסורת או חדשנות. לכן אפשר לראות
-        בכל גרסה של חדר הסגלגל מעין דיוקן עקיף של הנשיא המכהן.
-      </p>
-
-      <img class="wide-img" src="images/oval-office-front-view.png" alt="חדר הסגלגל" onclick="openLightbox(this)">
-      <p class="credit">קרדיט: צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
-    </section>
-
-    <section class="lang-en">
-      <h2>Home – Ultra Expanded Introduction</h2>
-      <p>
-        The Oval Office is one of the most recognizable political spaces in the modern world. On the surface,
-        it is a working office. In practice, it is a room where history, architecture, media, national symbolism,
-        and international diplomacy converge.
-      </p>
-      <p>
-        The way the room is photographed, the background behind the president, the paintings, sculptures,
-        carpet, curtains, flags, and even seating angles all form a visual language.
-      </p>
-      <p>
-        Its oval form is central to its effect. Unlike a rectangular office, the oval creates movement, softness,
-        and continuity. The eye moves around the room and returns to the center: the president, the desk,
-        the flags, and the fireplace.
-      </p>
-      <p>
-        Almost every president reshapes the room. These changes are not merely decorative; they express priorities,
-        values, historical references, and political identity.
-      </p>
-
-      <img class="wide-img" src="images/oval-office-front-view.png" alt="The Oval Office" onclick="openLightbox(this)">
-      <p class="credit">Credit: Official White House / U.S. Government photograph, Public Domain.</p>
-    </section>
-
-    <section class="lang-he">
-      <h2>ג׳ורג׳ וושינגטון וטאפט – הרעיון והחדר המודרני</h2>
-
-      <div class="grid">
-        <div class="card">
-          <img src="images/george-washington-portrait-gilbert-stuart.png" alt="ג׳ורג׳ וושינגטון" onclick="openLightbox(this)">
-          <div class="card-content">
-            <h3>ג׳ורג׳ וושינגטון</h3>
-            <p><strong>שנות חיים:</strong> 1732–1799</p>
-            <p>
-              וושינגטון לא עבד בחדר הסגלגל המודרני, מפני שהחדר נבנה רק במאה ה־20.
-              עם זאת, הוא קשור באופן עמוק למסורת האדריכלית שממנה צמח החדר.
-              בתקופתו של וושינגטון התבסס הרעיון שחדרים אליפטיים מתאימים לקבלות פנים רשמיות,
-              משום שהם מאפשרים תנועה מעגלית, מפגש מסודר עם אורחים והצגה מאוזנת של סמכות.
-            </p>
-            <p>
-              עבור הרפובליקה האמריקאית הצעירה, הצורה האליפטית הייתה פתרון סמלי חשוב.
-              היא איפשרה ליצור טקסיות וכבוד בלי לחקות באופן מוגזם חצר מלוכה אירופית.
-              כך נוצר איזון בין ממלכתיות לבין ערכים רפובליקניים: הנשיא נראה מכובד, אך לא מלך.
-            </p>
-            <p>
-              לכן תרומתו של וושינגטון לחדר הסגלגל אינה בבנייה פיזית, אלא ביצירת מסורת:
-              חלל נשיאותי רשמי, טקסי, פתוח ומעוגל, שבו המנהיגות נראית לעיני הציבור באופן מבוקר ומכובד.
-            </p>
-            <p class="credit">דיוקן ג׳ורג׳ וושינגטון, מאת Gilbert Stuart, נחלת הכלל.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="images/william-howard-taft-portrait.png" alt="ויליאם הווארד טאפט" onclick="openLightbox(this)">
-          <div class="card-content">
-            <h3>ויליאם הווארד טאפט</h3>
-            <p><strong>שנות חיים:</strong> 1857–1930</p>
-            <p>
-              טאפט הוא הנשיא המזוהה ביותר עם יצירת חדר הסגלגל כמשרד נשיאותי ממשי.
-              בשנת 1909, בתקופת כהונתו, נבנה חדר הסגלגל הראשון באגף המערבי.
-              זה היה צעד משמעותי בהתפתחות הבית הלבן כמרכז עבודה מודרני, ולא רק כמעון רשמי.
-            </p>
-            <p>
-              בתחילת המאה ה־20 גדלו מאוד צורכי הממשל הפדרלי. הנשיא נזקק למשרד סמוך ליועצים,
-              מזכירים, חדרי ישיבות ומוקדי קבלת החלטות. טאפט הבין שהנשיאות המודרנית דורשת
-              חלל עבודה קבוע, ייצוגי ומאורגן יותר.
-            </p>
-            <p>
-              בכך טאפט חיבר בין המסורת האליפטית המוקדמת לבין המבנה המנהלי של הנשיאות המודרנית.
-              החדר שנבנה בתקופתו הפך בהמשך לאחד הסמלים המרכזיים של מוסד הנשיאות.
-            </p>
-            <p class="credit">דיוקן ויליאם הווארד טאפט, נחלת הכלל.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="lang-en">
-      <h2>Washington and Taft – The Idea and the Modern Office</h2>
-
-      <div class="grid">
-        <div class="card">
-          <img src="images/george-washington-portrait-gilbert-stuart.png" alt="George Washington" onclick="openLightbox(this)">
-          <div class="card-content">
-            <h3>George Washington</h3>
-            <p><strong>Life years:</strong> 1732–1799</p>
-            <p>
-              Washington never worked in the modern Oval Office, but he is connected to the tradition from which it grew.
-              In his era, oval rooms were used for formal receptions because they allowed orderly movement,
-              ceremonial dignity, and a balanced presentation of authority.
-            </p>
-            <p>
-              For the young American republic, the oval form helped balance dignity with republican restraint.
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="images/william-howard-taft-portrait.png" alt="William Howard Taft" onclick="openLightbox(this)">
-          <div class="card-content">
-            <h3>William Howard Taft</h3>
-            <p><strong>Life years:</strong> 1857–1930</p>
-            <p>
-              Taft is closely associated with the creation of the Oval Office as a real presidential workspace.
-              In 1909, during his administration, the first Oval Office was built in the West Wing.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section
