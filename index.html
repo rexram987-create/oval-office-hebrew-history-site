@@ -29,7 +29,6 @@
     header h1 {
       font-size: 56px;
       margin: 0;
-      color: #ffffff;
     }
 
     header p {
@@ -37,6 +36,29 @@
       margin: 20px auto 0;
       color: #cbd5e1;
       font-size: 22px;
+    }
+
+    .language-box {
+      background: #020617;
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+
+    .language-box button {
+      background: #1e293b;
+      color: #e0f2fe;
+      border: 1px solid #475569;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      margin: 4px;
+      font-weight: bold;
+    }
+
+    .language-box button:hover {
+      background: #38bdf8;
+      color: #020617;
     }
 
     .tabs {
@@ -132,6 +154,16 @@
       border: 1px solid #475569;
     }
 
+    .profile-img {
+      width: 230px;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #38bdf8;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
     .credit {
       font-size: 13px;
       color: #94a3b8;
@@ -152,17 +184,35 @@
       padding-right: 22px;
     }
 
-    .timeline {
-      border-right: 4px solid #38bdf8;
-      padding-right: 22px;
+    .timeline-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
     }
 
-    .timeline-item {
+    .timeline-buttons button {
       background: #1e293b;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 18px;
+      color: #e0f2fe;
       border: 1px solid #475569;
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .timeline-buttons button:hover,
+    .timeline-buttons button.active {
+      background: #facc15;
+      color: #020617;
+    }
+
+    .timeline-detail {
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 18px;
+      padding: 22px;
+      min-height: 180px;
     }
 
     footer {
@@ -204,72 +254,77 @@
 
 <header>
   <div>
-    <h1>חדר הסגלגל</h1>
-    <p>
-      אתר מידע בעברית על ההיסטוריה, האדריכלות, הריהוט והקישוטים המרכזיים
-      של אחד החדרים החשובים והמוכרים ביותר בעולם.
+    <h1 data-he="חדר הסגלגל" data-en="The Oval Office">חדר הסגלגל</h1>
+    <p data-he="אתר מידע בעברית על ההיסטוריה, האדריכלות, הריהוט והקישוטים המרכזיים של אחד החדרים החשובים והמוכרים ביותר בעולם."
+       data-en="A historical website about the architecture, furniture, symbols, and defining events of one of the most recognizable rooms in the world.">
+      אתר מידע בעברית על ההיסטוריה, האדריכלות, הריהוט והקישוטים המרכזיים של אחד החדרים החשובים והמוכרים ביותר בעולם.
     </p>
   </div>
 </header>
 
+<div class="language-box">
+  <button onclick="setLanguage('he')">עברית</button>
+  <button onclick="setLanguage('en')">English</button>
+</div>
+
 <nav class="tabs">
-  <button class="tab-button active" onclick="openTab(event, 'home')">עמוד ראשי</button>
-  <button class="tab-button" onclick="openTab(event, 'etymology')">אטימולוגיה</button>
-  <button class="tab-button" onclick="openTab(event, 'planning')">תכנון ובנייה</button>
-  <button class="tab-button" onclick="openTab(event, 'technical')">מפרט טכני</button>
-  <button class="tab-button" onclick="openTab(event, 'furniture')">ריהוט</button>
-  <button class="tab-button" onclick="openTab(event, 'decorations')">קישוטים</button>
-  <button class="tab-button" onclick="openTab(event, 'timeline')">ציר זמן</button>
-  <button class="tab-button" onclick="openTab(event, 'sources')">מקורות וקרדיטים</button>
+  <button class="tab-button active" onclick="openTab(event, 'home')" data-he="עמוד ראשי" data-en="Home">עמוד ראשי</button>
+  <button class="tab-button" onclick="openTab(event, 'dimensions')" data-he="מידות" data-en="Dimensions">מידות</button>
+  <button class="tab-button" onclick="openTab(event, 'furniture')" data-he="ריהוט" data-en="Furniture">ריהוט</button>
+  <button class="tab-button" onclick="openTab(event, 'decorations')" data-he="קישוטים" data-en="Decorations">קישוטים</button>
+  <button class="tab-button" onclick="openTab(event, 'timeline')" data-he="ציר זמן" data-en="Timeline">ציר זמן</button>
+  <button class="tab-button" onclick="openTab(event, 'about')" data-he="אודות" data-en="About">אודות</button>
+  <button class="tab-button" onclick="openTab(event, 'sources')" data-he="מקורות" data-en="Sources">מקורות</button>
 </nav>
 
 <main>
 
   <div id="home" class="tab-content active">
     <section>
-      <h2>עמוד ראשי – מבוא</h2>
-      <p>
-        חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית באגף המערבי של הבית הלבן.
-        החדר משמש לפגישות מדיניות, חתימה על חוקים, נאומים מצולמים, קבלת מנהיגים
-        וצילומים רשמיים שמסמלים את מוסד הנשיאות האמריקאית.
+      <h2 data-he="עמוד ראשי – מבוא" data-en="Home – Introduction">עמוד ראשי – מבוא</h2>
+      <p data-he="חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית באגף המערבי של הבית הלבן. החדר משמש לפגישות מדיניות, חתימה על חוקים, נאומים מצולמים, קבלת מנהיגים וצילומים רשמיים."
+         data-en="The Oval Office is the official working office of the President of the United States in the West Wing of the White House. It is used for policy meetings, signing legislation, televised addresses, receiving leaders, and official photography.">
+        חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית באגף המערבי של הבית הלבן. החדר משמש לפגישות מדיניות, חתימה על חוקים, נאומים מצולמים, קבלת מנהיגים וצילומים רשמיים.
       </p>
 
-      <img class="wide-img" src="images/oval-office-front-view.png" alt="מבט כללי על חדר הסגלגל" onclick="openLightbox(this)">
-
-      <p class="credit">
+      <img class="wide-img" src="images/oval-office-front-view.png" alt="Oval Office" onclick="openLightbox(this)">
+      <p class="credit" data-he="קרדיט: חדר הסגלגל בבית הלבן, צילום רשמי של ממשלת ארצות הברית / הבית הלבן, נחלת הכלל."
+         data-en="Credit: The Oval Office, official White House / U.S. Government photograph, Public Domain.">
         קרדיט: חדר הסגלגל בבית הלבן, צילום רשמי של ממשלת ארצות הברית / הבית הלבן, נחלת הכלל.
       </p>
     </section>
 
     <section>
-      <h2>האנשים המרכזיים מאחורי הרעיון</h2>
+      <h2 data-he="האנשים המרכזיים מאחורי הרעיון" data-en="Key Figures Behind the Idea">האנשים המרכזיים מאחורי הרעיון</h2>
 
       <div class="grid">
         <div class="card">
-          <img src="images/george-washington-portrait-gilbert-stuart.png" alt="ג'ורג' וושינגטון" onclick="openLightbox(this)">
+          <img src="images/george-washington-portrait-gilbert-stuart.png" alt="George Washington" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>ג׳ורג׳ וושינגטון</h3>
-            <p><strong>שנות חיים:</strong> 1732–1799</p>
-            <p>
-              וושינגטון לא עבד בחדר הסגלגל המודרני, שנבנה הרבה אחרי מותו,
-              אך בתקופתו התבססה המסורת של חללים אליפטיים רשמיים בבית הנשיא.
+            <h3 data-he="ג׳ורג׳ וושינגטון" data-en="George Washington">ג׳ורג׳ וושינגטון</h3>
+            <p data-he="שנות חיים: 1732–1799" data-en="Life years: 1732–1799">שנות חיים: 1732–1799</p>
+            <p data-he="וושינגטון לא עבד בחדר הסגלגל המודרני, אך בתקופתו התבססה המסורת של חדרים אליפטיים רשמיים בבית הנשיא. חללים אליפטיים נחשבו מתאימים לקבלות פנים משום שהם יצרו תנועה מעגלית, סימטריה ותחושת שוויון בין הנוכחים."
+               data-en="Washington never worked in the modern Oval Office, but during his era the tradition of formal oval rooms in the presidential residence was established. Oval spaces were useful for receptions because they encouraged circular movement, symmetry, and a sense of equality among guests.">
+              וושינגטון לא עבד בחדר הסגלגל המודרני, אך בתקופתו התבססה המסורת של חדרים אליפטיים רשמיים בבית הנשיא.
             </p>
-            <p class="credit">
+            <p class="credit" data-he="קרדיט: דיוקן ג׳ורג׳ וושינגטון, מאת Gilbert Stuart, 1796, נחלת הכלל."
+               data-en="Credit: Portrait of George Washington by Gilbert Stuart, 1796, Public Domain.">
               קרדיט: דיוקן ג׳ורג׳ וושינגטון, מאת Gilbert Stuart, 1796, נחלת הכלל.
             </p>
           </div>
         </div>
 
         <div class="card">
-          <img src="images/william-howard-taft-portrait.png" alt="ויליאם הווארד טאפט" onclick="openLightbox(this)">
+          <img src="images/william-howard-taft-portrait.png" alt="William Howard Taft" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>ויליאם הווארד טאפט</h3>
-            <p><strong>שנות חיים:</strong> 1857–1930</p>
-            <p>
-              טאפט היה הנשיא שבתקופתו, בשנת 1909, נבנה חדר הסגלגל הראשון
-              באגף המערבי. בכך הוא תרם להפיכת משרד הנשיא לחלל עבודה רשמי וקבוע.
+            <h3 data-he="ויליאם הווארד טאפט" data-en="William Howard Taft">ויליאם הווארד טאפט</h3>
+            <p data-he="שנות חיים: 1857–1930" data-en="Life years: 1857–1930">שנות חיים: 1857–1930</p>
+            <p data-he="טאפט היה הנשיא שבתקופתו, בשנת 1909, נבנה חדר הסגלגל הראשון באגף המערבי. הדבר הפך את משרד הנשיא לחלל עבודה רשמי, קבוע ומזוהה יותר עם מוסד הנשיאות."
+               data-en="Taft was the president during whose administration the first Oval Office was built in the West Wing in 1909. This helped transform the president’s office into a permanent and recognizable working space of the presidency.">
+              טאפט היה הנשיא שבתקופתו, בשנת 1909, נבנה חדר הסגלגל הראשון באגף המערבי.
             </p>
-            <p class="credit">
+            <p class="credit" data-he="קרדיט: דיוקן ויליאם הווארד טאפט, נחלת הכלל."
+               data-en="Credit: Portrait of William Howard Taft, Public Domain.">
               קרדיט: דיוקן ויליאם הווארד טאפט, נחלת הכלל.
             </p>
           </div>
@@ -278,99 +333,82 @@
     </section>
   </div>
 
-  <div id="etymology" class="tab-content">
+  <div id="dimensions" class="tab-content">
     <section>
-      <h2>פירוק שם אטימולוגי מלא</h2>
-      <p>
-        השם האנגלי <strong>Oval Office</strong> מורכב משתי מילים:
-      </p>
-      <ul>
-        <li><strong>Oval</strong> – צורה אליפטית או ביצתית. מקור המילה קשור ללטינית <em>ovum</em>, שפירושה ביצה.</li>
-        <li><strong>Office</strong> – משרד או לשכה רשמית. מקור המילה בלטינית <em>officium</em>, שפירושה תפקיד, חובה או שירות.</li>
-      </ul>
-
-      <div class="note">
-        המשמעות המילולית היא: <strong>המשרד האליפטי</strong>. בעברית התקבע השם: <strong>חדר הסגלגל</strong>.
-      </div>
-    </section>
-  </div>
-
-  <div id="planning" class="tab-content">
-    <section>
-      <h2>שם ההוגה, סיבת הבנייה ומשך הבנייה</h2>
-
-      <h3>שם ההוגה</h3>
-      <p>
-        חדר הסגלגל המודרני מזוהה עם תקופת הנשיא ויליאם הווארד טאפט,
-        שבמסגרת הרחבת האגף המערבי בשנת 1909 נבנה משרד נשיאותי אליפטי.
-      </p>
-
-      <h3>סיבת הבנייה</h3>
-      <ul>
-        <li>יצירת משרד נשיאותי רשמי וקבוע באגף המערבי.</li>
-        <li>יצירת חלל ייצוגי לפגישות, חתימות וצילומים רשמיים.</li>
-        <li>שימוש בצורה אליפטית המזכירה מסורת אדריכלית קלאסית ורשמית.</li>
-        <li>שיפור התחושה בחדר: פתיחות, זרימה, סימטריה והיעדר פינות חדות.</li>
-      </ul>
-
-      <h3>משך הבנייה והשינויים</h3>
-      <p>
-        החדר הראשון הוקם בשנת 1909. בשנת 1934, בתקופת פרנקלין דלאנו רוזוולט,
-        נבנה חדר הסגלגל במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי.
-      </p>
-    </section>
-
-    <section>
-      <h2>חומרי הבנייה</h2>
-      <ul>
-        <li><strong>רצפה:</strong> עץ איכותי, בדרך כלל מכוסה בשטיח נשיאותי גדול.</li>
-        <li><strong>קירות:</strong> גימור בהיר, טפטים או צבע לפי בחירת הנשיא.</li>
-        <li><strong>תקרה:</strong> תקרה גבוהה עם עיטורים קלאסיים.</li>
-        <li><strong>חלונות:</strong> שלושה חלונות גדולים הפונים למדשאה הדרומית.</li>
-        <li><strong>טקסטיל:</strong> וילונות כבדים, ריפוד, שטיחים ובדים יוקרתיים.</li>
-      </ul>
-    </section>
-  </div>
-
-  <div id="technical" class="tab-content">
-    <section>
-      <h2>מפרט טכני מלא של החדר</h2>
+      <h2 data-he="מידות מדויקות של החדר, השולחן והחלונות" data-en="Exact Dimensions of the Room, Desk, and Windows">
+        מידות מדויקות של החדר, השולחן והחלונות
+      </h2>
 
       <div class="grid">
-        <div class="card"><div class="card-content"><h3>צורה</h3><p>אליפסה סימטרית, שמעניקה לחדר את שמו ואת האופי הייחודי שלו.</p></div></div>
-        <div class="card"><div class="card-content"><h3>מיקום</h3><p>האגף המערבי של הבית הלבן, סמוך לחדר הקבינט ולגן הוורדים.</p></div></div>
-        <div class="card"><div class="card-content"><h3>חלונות</h3><p>שלושה חלונות גדולים מאחורי שולחן הנשיא, לכיוון המדשאה הדרומית.</p></div></div>
-        <div class="card"><div class="card-content"><h3>שימושים</h3><p>פגישות, נאומים, צילומים רשמיים, חתימות על חוקים וקבלת אורחים.</p></div></div>
+        <div class="card">
+          <div class="card-content">
+            <h3 data-he="מידות חדר הסגלגל" data-en="Oval Office Dimensions">מידות חדר הסגלגל</h3>
+            <ul>
+              <li data-he="ציר ארוך: 35 רגל ו־10 אינץ׳ / 10.9 מטר" data-en="Long axis: 35 ft 10 in / 10.9 m">ציר ארוך: 35 רגל ו־10 אינץ׳ / 10.9 מטר</li>
+              <li data-he="ציר קצר: 29 רגל / 8.8 מטר" data-en="Short axis: 29 ft / 8.8 m">ציר קצר: 29 רגל / 8.8 מטר</li>
+              <li data-he="גובה תקרה: 18 רגל ו־6 אינץ׳ / 5.6 מטר" data-en="Ceiling height: 18 ft 6 in / 5.6 m">גובה תקרה: 18 רגל ו־6 אינץ׳ / 5.6 מטר</li>
+              <li data-he="נקודת תחילת קימור התקרה: 16 רגל ו־7 אינץ׳ / 5.0 מטר" data-en="Line of rise: 16 ft 7 in / 5.0 m">נקודת תחילת קימור התקרה: 16 רגל ו־7 אינץ׳ / 5.0 מטר</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3 data-he="מידות שולחן Resolute" data-en="Resolute Desk Dimensions">מידות שולחן Resolute</h3>
+            <ul>
+              <li data-he="גובה: כ־32.5 אינץ׳ / כ־83 ס״מ" data-en="Height: about 32.5 in / about 83 cm">גובה: כ־32.5 אינץ׳ / כ־83 ס״מ</li>
+              <li data-he="רוחב: 72 אינץ׳ / כ־183 ס״מ" data-en="Width: 72 in / about 183 cm">רוחב: 72 אינץ׳ / כ־183 ס״מ</li>
+              <li data-he="עומק: 48 אינץ׳ / כ־122 ס״מ" data-en="Depth: 48 in / about 122 cm">עומק: 48 אינץ׳ / כ־122 ס״מ</li>
+              <li data-he="משקל: כ־1,300 ליברות / כ־590 ק״ג" data-en="Weight: about 1,300 lb / about 590 kg">משקל: כ־1,300 ליברות / כ־590 ק״ג</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3 data-he="החלונות" data-en="The Windows">החלונות</h3>
+            <p data-he="בחדר הסגלגל יש שלושה חלונות גדולים הפונים למדשאה הדרומית, ומולם מוצב בדרך כלל שולחן הנשיא. לא מצאתי מקור רשמי אמין שמפרסם את מידות החלונות המדויקות, ולכן באתר לא מוצגים מספרים שאינם מאומתים."
+               data-en="The Oval Office has three large windows facing the South Lawn, with the president’s desk traditionally placed in front of them. I did not find a reliable official source publishing their exact dimensions, so this site does not present unverified numbers.">
+              בחדר הסגלגל יש שלושה חלונות גדולים הפונים למדשאה הדרומית. לא מצאתי מקור רשמי אמין שמפרסם את מידות החלונות המדויקות.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
 
   <div id="furniture" class="tab-content">
     <section>
-      <h2>פרטי הריהוט המרכזיים בחדר</h2>
+      <h2 data-he="היסטוריה מורחבת של פרטי הריהוט" data-en="Expanded History of the Furniture">היסטוריה מורחבת של פרטי הריהוט</h2>
 
       <div class="grid">
         <div class="card">
-          <img src="images/resolute-desk-front-view.png" alt="שולחן Resolute" onclick="openLightbox(this)">
+          <img src="images/resolute-desk-front-view.png" alt="Resolute Desk" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>שולחן Resolute</h3>
-            <p>
-              שולחן הכתיבה המפורסם ביותר של נשיאי ארצות הברית.
-              הוא נבנה מעץ הספינה הבריטית HMS Resolute ונמסר כמתנה לארצות הברית על ידי המלכה ויקטוריה.
+            <h3 data-he="שולחן Resolute" data-en="The Resolute Desk">שולחן Resolute</h3>
+            <p data-he="שולחן Resolute נבנה בשנת 1880 מעץ הספינה הבריטית HMS Resolute. הוא ניתן במתנה לנשיא רתרפורד הייז על ידי המלכה ויקטוריה כסמל לידידות בין בריטניה לארצות הברית. עם השנים הפך השולחן לאחד הסמלים החזקים ביותר של הנשיאות האמריקאית."
+               data-en="The Resolute Desk was built in 1880 from the timbers of the British ship HMS Resolute. It was presented to President Rutherford B. Hayes by Queen Victoria as a symbol of friendship between Britain and the United States. Over time, it became one of the most powerful visual symbols of the American presidency.">
+              שולחן Resolute נבנה בשנת 1880 מעץ הספינה הבריטית HMS Resolute.
             </p>
-            <p class="credit">קרדיט: שולחן Resolute בחדר הסגלגל, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
+            <p class="credit" data-he="קרדיט: שולחן Resolute, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל."
+               data-en="Credit: Resolute Desk, official White House / U.S. Government photograph, Public Domain.">
+              קרדיט: שולחן Resolute, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.
+            </p>
           </div>
         </div>
 
         <div class="card">
-          <img src="images/oval-office-front-view.png" alt="ריהוט חדר הסגלגל" onclick="openLightbox(this)">
+          <img src="images/oval-office-front-view.png" alt="Oval Office furniture" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>ספות, כורסאות ושולחנות צד</h3>
-            <p>
-              אזור הישיבה בחדר משמש לפגישות רשמיות ופחות רשמיות.
-              הריהוט משתנה בין נשיאים ומשקף את הטעם, המסר והסגנון של כל ממשל.
+            <h3 data-he="ספות, כורסאות ושולחנות צד" data-en="Sofas, Armchairs, and Side Tables">ספות, כורסאות ושולחנות צד</h3>
+            <p data-he="הריהוט באזור הישיבה משתנה בין נשיאים. בחירת הצבעים, הבדים, הכורסאות והשולחנות מאפשרת לכל נשיא לעצב את החדר בהתאם לאופי הממשל: רשמיות, חמימות, מסורת, מודרניות או עוצמה."
+               data-en="The seating furniture changes from one administration to another. The choice of colors, fabrics, chairs, and tables allows each president to shape the room according to the tone of the administration: formality, warmth, tradition, modernity, or authority.">
+              הריהוט באזור הישיבה משתנה בין נשיאים ומשקף את סגנון הממשל.
             </p>
-            <p class="credit">קרדיט: חדר הסגלגל, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
+            <p class="credit" data-he="קרדיט: חדר הסגלגל, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל."
+               data-en="Credit: The Oval Office, official White House / U.S. Government photograph, Public Domain.">
+              קרדיט: חדר הסגלגל, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.
+            </p>
           </div>
         </div>
       </div>
@@ -379,33 +417,39 @@
 
   <div id="decorations" class="tab-content">
     <section>
-      <h2>הקישוטים המרכזיים בחדר</h2>
+      <h2 data-he="היסטוריה מורחבת של הקישוטים המרכזיים" data-en="Expanded History of the Main Decorations">היסטוריה מורחבת של הקישוטים המרכזיים</h2>
 
       <div class="grid">
         <div class="card">
-          <img src="images/oval-office-presidential-seal-carpet.png" alt="שטיח הנשיא" onclick="openLightbox(this)">
+          <img src="images/oval-office-presidential-seal-carpet.png" alt="Oval Office carpet" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>השטיח הנשיאותי</h3>
-            <p>השטיח הוא אחד הפריטים הבולטים בחדר. לרוב מופיע עליו סמל נשיא ארצות הברית.</p>
-            <p class="credit">קרדיט: שטיח חדר הסגלגל עם סמל נשיא ארצות הברית, צילום ממשלתי רשמי, נחלת הכלל.</p>
+            <h3 data-he="השטיח הנשיאותי" data-en="The Presidential Carpet">השטיח הנשיאותי</h3>
+            <p data-he="השטיח בחדר הסגלגל נחשב לאחד הביטויים האישיים ביותר של הנשיא בחדר. הוא כולל לרוב את סמל הנשיא, ולעיתים צבעים, ציטוטים או מוטיבים שנבחרו במיוחד כדי לשקף ערכים מרכזיים של הממשל."
+               data-en="The Oval Office carpet is one of the most personal decorative choices in the room. It often includes the presidential seal, and sometimes colors, quotations, or motifs selected to reflect the values of the administration.">
+              השטיח בחדר הסגלגל הוא אחד הביטויים האישיים ביותר של הנשיא בחדר.
+            </p>
           </div>
         </div>
 
         <div class="card">
-          <img src="images/oval-office-fireplace-front-view.png" alt="האח בחדר הסגלגל" onclick="openLightbox(this)">
+          <img src="images/oval-office-fireplace-front-view.png" alt="Oval Office fireplace" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>האח והדיוקן מעליו</h3>
-            <p>האח הוא מוקד חזותי חשוב בחדר. מעליו מוצגים לעיתים דיוקנאות נשיאותיים או יצירות אמנות.</p>
-            <p class="credit">קרדיט: האח בחדר הסגלגל, צילום רשמי של ממשלת ארצות הברית / הבית הלבן, נחלת הכלל.</p>
+            <h3 data-he="האח והקיר הצפוני" data-en="The Fireplace and North Wall">האח והקיר הצפוני</h3>
+            <p data-he="האח ממוקם מול אזור שולחן הנשיא ומהווה מוקד חזותי חשוב. מעליו הוצגו לאורך השנים דיוקנאות ויצירות שונות, המשמשים כרמזים היסטוריים לערכים, לדמויות או למסורות שהנשיא מבקש להדגיש."
+               data-en="The fireplace stands opposite the president’s desk area and serves as an important visual focus. Above it, presidents have displayed portraits and artworks that signal historical values, figures, or traditions they wish to emphasize.">
+              האח ממוקם מול אזור שולחן הנשיא ומהווה מוקד חזותי חשוב.
+            </p>
           </div>
         </div>
 
         <div class="card">
-          <img src="images/andrew-jackson-portrait-thomas-sully.png" alt="דיוקן אנדרו ג'קסון" onclick="openLightbox(this)">
+          <img src="images/andrew-jackson-portrait-thomas-sully.png" alt="Andrew Jackson portrait" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>דיוקן אנדרו ג׳קסון</h3>
-            <p>דיוקנאות של נשיאים קודמים מוצבים לעיתים בחדר כדי לשדר המשכיות וזיקה למסורת נשיאותית.</p>
-            <p class="credit">קרדיט: דיוקן אנדרו ג׳קסון, מאת Thomas Sully, נחלת הכלל.</p>
+            <h3 data-he="דיוקן אנדרו ג׳קסון" data-en="Portrait of Andrew Jackson">דיוקן אנדרו ג׳קסון</h3>
+            <p data-he="דיוקנאות של נשיאים קודמים מוצבים בחדר כדי ליצור קשר חזותי בין הנשיא המכהן לבין מסורות קודמות של מנהיגות אמריקאית. בחירה בדיוקן מסוים יכולה לשאת משמעות פוליטית, היסטורית או סמלית."
+               data-en="Portraits of former presidents are displayed to create a visual link between the sitting president and earlier traditions of American leadership. The choice of a specific portrait may carry political, historical, or symbolic meaning.">
+              דיוקנאות של נשיאים קודמים יוצרים קשר חזותי למסורת הנשיאותית.
+            </p>
           </div>
         </div>
 
@@ -413,17 +457,21 @@
           <img src="images/the-broncho-buster-remington-met-1895.jpg" alt="The Broncho Buster" onclick="openLightbox(this)">
           <div class="card-content">
             <h3>The Broncho Buster</h3>
-            <p>פסל מאת Frederic Remington משנת 1895, המזוהה עם דימוי המערב האמריקאי.</p>
-            <p class="credit">קרדיט: The Broncho Buster, מאת Frederic Remington, 1895, באדיבות The Metropolitan Museum of Art, CC0.</p>
+            <p data-he="הפסל The Broncho Buster, מאת Frederic Remington, נוצר בשנת 1895 ומזוהה עם דימוי המערב האמריקאי. הוא מבטא תנועה, כוח, שליטה, סיכון וסיפור לאומי של גבול, רכיבה והתפשטות מערבה."
+               data-en="The Broncho Buster by Frederic Remington was created in 1895 and is associated with the imagery of the American West. It conveys motion, force, control, risk, and the national story of frontier expansion.">
+              הפסל The Broncho Buster מזוהה עם דימוי המערב האמריקאי.
+            </p>
           </div>
         </div>
 
         <div class="card">
-          <img src="images/winston-churchill-bust-epstein.png" alt="פסל ראש של וינסטון צ'רצ'יל" onclick="openLightbox(this)">
+          <img src="images/winston-churchill-bust-epstein.png" alt="Winston Churchill bust" onclick="openLightbox(this)">
           <div class="card-content">
-            <h3>פסל ראש של וינסטון צ׳רצ׳יל</h3>
-            <p>פסל ראש של וינסטון צ׳רצ׳יל מסמל את הקשר ההיסטורי בין ארצות הברית לבריטניה.</p>
-            <p class="credit">קרדיט: פסל ראש של וינסטון צ׳רצ׳יל, מאת Jacob Epstein, נחלת הכלל / Wikimedia Commons.</p>
+            <h3 data-he="פסל ראש של וינסטון צ׳רצ׳יל" data-en="Bust of Winston Churchill">פסל ראש של וינסטון צ׳רצ׳יל</h3>
+            <p data-he="פסל ראש של וינסטון צ׳רצ׳יל מסמל את הקשר ההיסטורי בין ארצות הברית לבריטניה, במיוחד בהקשר של מלחמת העולם השנייה, הברית האטלנטית והזיכרון של מנהיגות בעת משבר."
+               data-en="A bust of Winston Churchill symbolizes the historic relationship between the United States and Britain, especially in the context of World War II, the Atlantic alliance, and leadership during crisis.">
+              פסל ראש של צ׳רצ׳יל מסמל את הקשר ההיסטורי בין ארצות הברית לבריטניה.
+            </p>
           </div>
         </div>
       </div>
@@ -432,45 +480,119 @@
 
   <div id="timeline" class="tab-content">
     <section>
-      <h2>ציר זמן קצר של חדר הסגלגל</h2>
+      <h2 data-he="ציר זמן אינטראקטיבי – אירועים מכוננים בחדר הסגלגל" data-en="Interactive Timeline – Defining Events in the Oval Office">
+        ציר זמן אינטראקטיבי – אירועים מכוננים בחדר הסגלגל
+      </h2>
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>תקופת ג׳ורג׳ וושינגטון</h3>
-          <p>וושינגטון לא השתמש בחדר הסגלגל המודרני, אך בתקופתו התגבשה מסורת של חדרים אליפטיים לקבלות פנים רשמיות.</p>
-        </div>
-
-        <div class="timeline-item">
-          <h3>1909 – ויליאם הווארד טאפט</h3>
-          <p>נבנה חדר הסגלגל הראשון באגף המערבי, כחלק מארגון מחדש של סביבת העבודה הנשיאותית.</p>
-        </div>
-
-        <div class="timeline-item">
-          <h3>1934 – פרנקלין דלאנו רוזוולט</h3>
-          <p>החדר נבנה במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי.</p>
-        </div>
-
-        <div class="timeline-item">
-          <h3>המאה ה־20 וה־21</h3>
-          <p>כל נשיא כמעט משנה את צבעי החדר, השטיחים, הווילונות, יצירות האמנות והחפצים האישיים.</p>
-        </div>
+      <div class="timeline-buttons">
+        <button class="active" onclick="showEvent(event, 'event1909')">1909</button>
+        <button onclick="showEvent(event, 'event1934')">1934</button>
+        <button onclick="showEvent(event, 'event1962')">1962</button>
+        <button onclick="showEvent(event, 'event1969')">1969</button>
+        <button onclick="showEvent(event, 'event1974')">1974</button>
+        <button onclick="showEvent(event, 'event1986')">1986</button>
+        <button onclick="showEvent(event, 'event2001')">2001</button>
+        <button onclick="showEvent(event, 'event2011')">2011</button>
       </div>
+
+      <div id="event1909" class="timeline-detail timeline-event">
+        <h3 data-he="1909 – הקמת חדר הסגלגל הראשון" data-en="1909 – The First Oval Office">1909 – הקמת חדר הסגלגל הראשון</h3>
+        <p data-he="בתקופת הנשיא ויליאם הווארד טאפט נבנה חדר הסגלגל הראשון באגף המערבי. זה היה שלב חשוב בהפיכת סביבת העבודה הנשיאותית למרחב מודרני, מסודר ומזוהה."
+           data-en="During William Howard Taft’s presidency, the first Oval Office was built in the West Wing. This was an important step in turning the presidential workplace into a modern, organized, and recognizable space.">
+          בתקופת הנשיא ויליאם הווארד טאפט נבנה חדר הסגלגל הראשון באגף המערבי.
+        </p>
+      </div>
+
+      <div id="event1934" class="timeline-detail timeline-event" style="display:none;">
+        <h3 data-he="1934 – חדר הסגלגל במיקומו המוכר כיום" data-en="1934 – The Modern Location of the Oval Office">1934 – חדר הסגלגל במיקומו המוכר כיום</h3>
+        <p data-he="בתקופת פרנקלין דלאנו רוזוולט נבנה חדר הסגלגל במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי."
+           data-en="During Franklin D. Roosevelt’s administration, the Oval Office was built in its familiar modern location at the southeast corner of the West Wing.">
+          בתקופת פרנקלין דלאנו רוזוולט נבנה חדר הסגלגל במיקומו המוכר כיום.
+        </p>
+      </div>
+
+      <div id="event1962" class="timeline-detail timeline-event" style="display:none;">
+        <h3 data-he="1962 – משבר הטילים בקובה" data-en="1962 – Cuban Missile Crisis">1962 – משבר הטילים בקובה</h3>
+        <p data-he="בימי הנשיא ג׳ון פ. קנדי, חדר הסגלגל היה אחד המוקדים הסמליים של קבלת ההחלטות בזמן משבר הטילים בקובה, מן הרגעים המסוכנים ביותר במלחמה הקרה."
+           data-en="During John F. Kennedy’s presidency, the Oval Office became one of the symbolic centers of decision-making during the Cuban Missile Crisis, one of the most dangerous moments of the Cold War.">
+          חדר הסגלגל היה אחד המוקדים הסמליים של קבלת ההחלטות בזמן משבר הטילים בקובה.
+        </p>
+      </div>
+
+      <div id="event1969" class="timeline-detail timeline-event" style="display:none;">
+        <h3 data-he="1969 – שיחת ניקסון עם האסטרונאוטים של אפולו 11" data-en="1969 – Nixon’s Call to Apollo 11 Astronauts">1969 – שיחת ניקסון עם האסטרונאוטים של אפולו 11</h3>
+        <p data-he="לאחר הנחיתה על הירח, הנשיא ריצ׳רד ניקסון שוחח מן הבית הלבן עם האסטרונאוטים. האירוע הפך לאחד הרגעים הסמליים של עידן החלל והנשיאות הטלוויזיונית."
+           data-en="After the Moon landing, President Richard Nixon spoke from the White House with the Apollo 11 astronauts. The moment became a powerful symbol of the space age and the televised presidency.">
+          לאחר הנחיתה על הירח, הנשיא ריצ׳רד ניקסון שוחח עם האסטרונאוטים.
+        </p>
+      </div>
+
+      <div id="event1974" class="timeline-detail timeline-event" style="display:none;">
+        <h3 data-he="1974 – התפטרות ניקסון" data-en="1974 – Nixon’s Resignation">1974 – התפטרות ניקסון</h3>
+        <p data-he="נאום ההתפטרות של הנשיא ריצ׳רד ניקסון מן הבית הלבן סימן רגע מכונן בהיסטוריה החוקתית של ארצות הברית וביחסי הציבור עם מוסד הנשיאות."
+           data-en="President Richard Nixon’s resignation address from the White House marked a defining moment in American constitutional history and in public trust toward the presidency.">
+          נאום ההתפטרות של ניקסון סימן רגע מכונן בהיסטוריה החוקתית של ארצות הברית.
+        </p>
+      </div>
+
+      <div id="event1986" class="timeline-detail timeline-event" style="display:none;">
+        <h3 data-he="1986 – נאום רייגן לאחר אסון צ׳לנג׳ר" data-en="1986 – Reagan’s Address after the Challenger Disaster">1986 – נאום רייגן לאחר אסון צ׳לנג׳ר</h3>
+        <p data-he="לאחר אסון מעבורת החלל צ׳לנג׳ר, הנשיא רונלד רייגן נשא נאום לאומה מן הבית הלבן. הנאום זכור כאחד מרגעי הנחמה הלאומיים המשמעותיים של הנשיאות המודרנית."
+           data-en="After the Space Shuttle Challenger disaster, President Ronald Reagan addressed the nation from the White House. The speech is remembered as one of the major moments of national consolation in the modern presidency.">
+          לאחר אסון צ׳לנג׳ר, רייגן נשא נאום לאומה מן הבית הלבן.
+        </p>
+      </div>
+
+      <div id="event2001" class="timeline-detail timeline-event" style="display:none;">
+        <h3 data-he="2001 – נאומים לאחר פיגועי 11 בספטמבר" data-en="2001 – Addresses after September 11">2001 – נאומים לאחר פיגועי 11 בספטמבר</h3>
+        <p data-he="לאחר פיגועי 11 בספטמבר, חדר הסגלגל והבית הלבן הפכו לזירה מרכזית של מסרים נשיאותיים על ביטחון, מלחמה, אבל לאומי ואחדות."
+           data-en="After the September 11 attacks, the Oval Office and the White House became central stages for presidential messages about security, war, national grief, and unity.">
+          לאחר פיגועי 11 בספטמבר, חדר הסגלגל הפך לזירה מרכזית של מסרים נשיאותיים.
+        </p>
+      </div>
+
+      <div id="event2011" class="timeline-detail timeline-event" style="display:none;">
+        <h3 data-he="2011 – הודעת אובמה על מבצע בן לאדן" data-en="2011 – Obama Announces the Bin Laden Operation">2011 – הודעת אובמה על מבצע בן לאדן</h3>
+        <p data-he="הנשיא ברק אובמה הודיע לציבור האמריקאי על המבצע שבו נהרג אוסאמה בן לאדן. ההודעה הפכה לאחד הרגעים הביטחוניים הבולטים של המאה ה־21."
+           data-en="President Barack Obama announced to the American public the operation in which Osama bin Laden was killed. The announcement became one of the most significant national-security moments of the 21st century.">
+          הנשיא ברק אובמה הודיע לציבור האמריקאי על המבצע שבו נהרג אוסאמה בן לאדן.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <div id="about" class="tab-content">
+    <section>
+      <h2 data-he="אודות האתר" data-en="About This Site">אודות האתר</h2>
+
+      <img class="profile-img" src="images/ram-profile.jpg" alt="Ram profile image" onclick="openLightbox(this)">
+
+      <p data-he="אתר זה נבנה כפרויקט ידע חזותי בעברית על חדר הסגלגל: ההיסטוריה שלו, המבנה האדריכלי, הריהוט, הקישוטים, הסמלים והאירועים המכוננים שהתרחשו בו."
+         data-en="This website was created as a visual knowledge project about the Oval Office: its history, architecture, furniture, decorations, symbols, and defining events.">
+        אתר זה נבנה כפרויקט ידע חזותי בעברית על חדר הסגלגל.
+      </p>
+
+      <p data-he="מטרת האתר היא להציג מידע היסטורי בצורה נגישה, יפה וברורה, עם תמונות חופשיות לשימוש וקרדיטים מסודרים."
+         data-en="The purpose of the site is to present historical information in a clear, accessible, and visually appealing way, using freely available images with proper credits.">
+        מטרת האתר היא להציג מידע היסטורי בצורה נגישה, יפה וברורה.
+      </p>
     </section>
   </div>
 
   <div id="sources" class="tab-content">
     <section>
-      <h2>מקורות וקרדיטים</h2>
+      <h2 data-he="מקורות וקרדיטים" data-en="Sources and Credits">מקורות וקרדיטים</h2>
 
       <ul>
-        <li>הבית הלבן הרשמי – תמונות רשמיות של חדר הסגלגל ונשיאי ארצות הברית.</li>
-        <li>Wikimedia Commons – תמונות נחלת הכלל וקרדיטים היסטוריים.</li>
-        <li>The Metropolitan Museum of Art – תמונות Open Access / CC0.</li>
-        <li>White House Historical Association – מידע היסטורי על החדר והריהוט.</li>
-        <li>National Archives – תיעוד ותמונות ממשלתיות היסטוריות.</li>
+        <li>White House Historical Association – Oval Office dimensions.</li>
+        <li>Britannica – Resolute Desk dimensions and description.</li>
+        <li>Wikimedia Commons – historical public-domain images.</li>
+        <li>The Metropolitan Museum of Art – Open Access / CC0 image of The Broncho Buster.</li>
+        <li>National Archives – public-domain government materials.</li>
+        <li>Official White House photographs – U.S. Government / Public Domain where applicable.</li>
       </ul>
 
-      <h3>קרדיטים לתמונות באתר</h3>
+      <h3 data-he="קרדיטים לתמונות" data-en="Image Credits">קרדיטים לתמונות</h3>
       <ul>
         <li>George Washington portrait, Gilbert Stuart, Public Domain.</li>
         <li>William Howard Taft portrait, Public Domain.</li>
@@ -479,13 +601,14 @@
         <li>Andrew Jackson portrait, Thomas Sully, Public Domain.</li>
         <li>The Broncho Buster, Frederic Remington, 1895, The Metropolitan Museum of Art, CC0.</li>
         <li>Winston Churchill bust, Jacob Epstein, Public Domain / Wikimedia Commons.</li>
+        <li>Profile image: ram-profile.jpg, supplied by the site creator.</li>
       </ul>
     </section>
   </div>
 
 </main>
 
-<footer>
+<footer data-he="חדר הסגלגל – אתר מידע היסטורי בעברית" data-en="The Oval Office – A Historical Information Website">
   חדר הסגלגל – אתר מידע היסטורי בעברית
 </footer>
 
@@ -495,6 +618,8 @@
 </div>
 
 <script>
+  let currentLanguage = "he";
+
   function openTab(event, tabId) {
     const contents = document.querySelectorAll(".tab-content");
     const buttons = document.querySelectorAll(".tab-button");
@@ -508,6 +633,29 @@
     });
 
     document.getElementById(tabId).classList.add("active");
+    event.currentTarget.classList.add("active");
+  }
+
+  function setLanguage(lang) {
+    currentLanguage = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "he" ? "rtl" : "ltr";
+
+    document.querySelectorAll("[data-he][data-en]").forEach(function(el) {
+      el.textContent = el.getAttribute("data-" + lang);
+    });
+  }
+
+  function showEvent(event, eventId) {
+    document.querySelectorAll(".timeline-event").forEach(function(item) {
+      item.style.display = "none";
+    });
+
+    document.querySelectorAll(".timeline-buttons button").forEach(function(button) {
+      button.classList.remove("active");
+    });
+
+    document.getElementById(eventId).style.display = "block";
     event.currentTarget.classList.add("active");
   }
 
