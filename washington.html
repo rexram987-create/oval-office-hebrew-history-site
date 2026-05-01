@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>ג׳ורג׳ וושינגטון</title>
 <link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 </head>
 
 <body>
@@ -21,32 +22,25 @@
 <section>
 <h2>רקע היסטורי</h2>
 <p>
-וושינגטון (1732–1799) היה הנשיא הראשון של ארצות הברית ואחת הדמויות
-המשמעותיות ביותר בהקמתה. הוא הוביל את המאבק לעצמאות והגדיר את
-המסגרת המוסדית של הממשל החדש.
+וושינגטון היה הנשיא הראשון של ארצות הברית והניח את יסודות הממשל.
 </p>
-</section>
 
-<section>
-<h2>תרומתו למוסד הנשיאות</h2>
-<ul>
-<li>יצירת מודל נשיאותי לא מלוכני</li>
-<li>הגדרת גבולות הכוח</li>
-<li>הדגשת אחריות ציבורית</li>
-</ul>
-</section>
-
-<section>
-<h2>קשר לחדר הסגלגל</h2>
+<div class="block">
+<h3>תרומה מרכזית</h3>
 <p>
-וושינגטון לא פעל בחדר הסגלגל, אך יצר את הבסיס הרעיוני לקיומו —
-חלל רשמי מכובד שאינו מלכותי.
+הוא יצר מודל נשיאותי שאינו מלוכני אך עדיין סמכותי ומכובד.
 </p>
+</div>
 
-<img src="images/george-washington-portrait-gilbert-stuart.png">
+<img src="images/george-washington-portrait-gilbert-stuart.png" onclick="openImg(this)">
 </section>
 
 </main>
+
+<div id="lightbox">
+<span onclick="closeImg()">&times;</span>
+<img id="lightbox-img">
+</div>
 
 </body>
 </html>
