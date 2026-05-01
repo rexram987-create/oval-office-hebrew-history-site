@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>חדר הסגלגל – היסטוריה, ריהוט וקישוטים</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.8;
+    }
+
+    header {
+      min-height: 80vh;
+      background:
+        linear-gradient(rgba(2, 6, 23, 0.78), rgba(2, 6, 23, 0.92)),
+        url("images/oval-office-front-view.png") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 56px;
+      margin: 0;
+      color: #ffffff;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: 20px auto 0;
+      color: #cbd5e1;
+      font-size: 22px;
+    }
+
+    .tabs {
+      background: #020617;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 12px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .tab-button {
+      border: none;
+      cursor: pointer;
+      background: #1e293b;
+      color: #e0f2fe;
+      padding: 10px 18px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 18px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    section {
+      background: #111827;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #38bdf8;
+      font-size: 34px;
+    }
+
+    h3 {
+      color: #facc15;
+      margin-top: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .wide-img {
+      width: 100%;
+      max-height: 620px;
+      object-fit: cover;
+      border-radius: 20px;
+      cursor: pointer;
+      border: 1px solid #475569;
+    }
+
+    .credit {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 10px;
+      border-top: 1px solid #334155;
+      padding-top: 10px;
+    }
+
+    .note {
+      background: #0f172a;
+      border-right: 5px solid #38bdf8;
+      padding: 18px;
+      border-radius: 16px;
+      margin: 20px 0;
+    }
+
+    ul {
+      padding-right: 22px;
+    }
+
+    .timeline {
+      border-right: 4px solid #38bdf8;
+      padding-right: 22px;
+    }
+
+    .timeline-item {
+      background: #1e293b;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+      border: 1px solid #475569;
+    }
+
+    footer {
+      background: #020617;
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #lightbox img {
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 18px;
+    }
+
+    #lightbox span {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 42px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <h1>חדר הסגלגל</h1>
+    <p>
+      אתר מידע בעברית על ההיסטוריה, האדריכלות, הריהוט והקישוטים המרכזיים
+      של אחד החדרים החשובים והמוכרים ביותר בעולם.
+    </p>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-button active" onclick="openTab(event, 'home')">עמוד ראשי</button>
+  <button class="tab-button" onclick="openTab(event, 'etymology')">אטימולוגיה</button>
+  <button class="tab-button" onclick="openTab(event, 'planning')">תכנון ובנייה</button>
+  <button class="tab-button" onclick="openTab(event, 'technical')">מפרט טכני</button>
+  <button class="tab-button" onclick="openTab(event, 'furniture')">ריהוט</button>
+  <button class="tab-button" onclick="openTab(event, 'decorations')">קישוטים</button>
+  <button class="tab-button" onclick="openTab(event, 'timeline')">ציר זמן</button>
+  <button class="tab-button" onclick="openTab(event, 'sources')">מקורות וקרדיטים</button>
+</nav>
+
+<main>
+
+  <div id="home" class="tab-content active">
+    <section>
+      <h2>עמוד ראשי – מבוא</h2>
+      <p>
+        חדר הסגלגל הוא משרדו הרשמי של נשיא ארצות הברית באגף המערבי של הבית הלבן.
+        החדר משמש לפגישות מדיניות, חתימה על חוקים, נאומים מצולמים, קבלת מנהיגים
+        וצילומים רשמיים שמסמלים את מוסד הנשיאות האמריקאית.
+      </p>
+
+      <img class="wide-img" src="images/oval-office-front-view.png" alt="מבט כללי על חדר הסגלגל" onclick="openLightbox(this)">
+
+      <p class="credit">
+        קרדיט: חדר הסגלגל בבית הלבן, צילום רשמי של ממשלת ארצות הברית / הבית הלבן, נחלת הכלל.
+      </p>
+    </section>
+
+    <section>
+      <h2>האנשים המרכזיים מאחורי הרעיון</h2>
+
+      <div class="grid">
+        <div class="card">
+          <img src="images/george-washington-portrait-gilbert-stuart.png" alt="ג'ורג' וושינגטון" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>ג׳ורג׳ וושינגטון</h3>
+            <p><strong>שנות חיים:</strong> 1732–1799</p>
+            <p>
+              וושינגטון לא עבד בחדר הסגלגל המודרני, שנבנה הרבה אחרי מותו,
+              אך בתקופתו התבססה המסורת של חללים אליפטיים רשמיים בבית הנשיא.
+            </p>
+            <p class="credit">
+              קרדיט: דיוקן ג׳ורג׳ וושינגטון, מאת Gilbert Stuart, 1796, נחלת הכלל.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/william-howard-taft-portrait.png" alt="ויליאם הווארד טאפט" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>ויליאם הווארד טאפט</h3>
+            <p><strong>שנות חיים:</strong> 1857–1930</p>
+            <p>
+              טאפט היה הנשיא שבתקופתו, בשנת 1909, נבנה חדר הסגלגל הראשון
+              באגף המערבי. בכך הוא תרם להפיכת משרד הנשיא לחלל עבודה רשמי וקבוע.
+            </p>
+            <p class="credit">
+              קרדיט: דיוקן ויליאם הווארד טאפט, נחלת הכלל.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="etymology" class="tab-content">
+    <section>
+      <h2>פירוק שם אטימולוגי מלא</h2>
+      <p>
+        השם האנגלי <strong>Oval Office</strong> מורכב משתי מילים:
+      </p>
+      <ul>
+        <li><strong>Oval</strong> – צורה אליפטית או ביצתית. מקור המילה קשור ללטינית <em>ovum</em>, שפירושה ביצה.</li>
+        <li><strong>Office</strong> – משרד או לשכה רשמית. מקור המילה בלטינית <em>officium</em>, שפירושה תפקיד, חובה או שירות.</li>
+      </ul>
+
+      <div class="note">
+        המשמעות המילולית היא: <strong>המשרד האליפטי</strong>. בעברית התקבע השם: <strong>חדר הסגלגל</strong>.
+      </div>
+    </section>
+  </div>
+
+  <div id="planning" class="tab-content">
+    <section>
+      <h2>שם ההוגה, סיבת הבנייה ומשך הבנייה</h2>
+
+      <h3>שם ההוגה</h3>
+      <p>
+        חדר הסגלגל המודרני מזוהה עם תקופת הנשיא ויליאם הווארד טאפט,
+        שבמסגרת הרחבת האגף המערבי בשנת 1909 נבנה משרד נשיאותי אליפטי.
+      </p>
+
+      <h3>סיבת הבנייה</h3>
+      <ul>
+        <li>יצירת משרד נשיאותי רשמי וקבוע באגף המערבי.</li>
+        <li>יצירת חלל ייצוגי לפגישות, חתימות וצילומים רשמיים.</li>
+        <li>שימוש בצורה אליפטית המזכירה מסורת אדריכלית קלאסית ורשמית.</li>
+        <li>שיפור התחושה בחדר: פתיחות, זרימה, סימטריה והיעדר פינות חדות.</li>
+      </ul>
+
+      <h3>משך הבנייה והשינויים</h3>
+      <p>
+        החדר הראשון הוקם בשנת 1909. בשנת 1934, בתקופת פרנקלין דלאנו רוזוולט,
+        נבנה חדר הסגלגל במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי.
+      </p>
+    </section>
+
+    <section>
+      <h2>חומרי הבנייה</h2>
+      <ul>
+        <li><strong>רצפה:</strong> עץ איכותי, בדרך כלל מכוסה בשטיח נשיאותי גדול.</li>
+        <li><strong>קירות:</strong> גימור בהיר, טפטים או צבע לפי בחירת הנשיא.</li>
+        <li><strong>תקרה:</strong> תקרה גבוהה עם עיטורים קלאסיים.</li>
+        <li><strong>חלונות:</strong> שלושה חלונות גדולים הפונים למדשאה הדרומית.</li>
+        <li><strong>טקסטיל:</strong> וילונות כבדים, ריפוד, שטיחים ובדים יוקרתיים.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div id="technical" class="tab-content">
+    <section>
+      <h2>מפרט טכני מלא של החדר</h2>
+
+      <div class="grid">
+        <div class="card"><div class="card-content"><h3>צורה</h3><p>אליפסה סימטרית, שמעניקה לחדר את שמו ואת האופי הייחודי שלו.</p></div></div>
+        <div class="card"><div class="card-content"><h3>מיקום</h3><p>האגף המערבי של הבית הלבן, סמוך לחדר הקבינט ולגן הוורדים.</p></div></div>
+        <div class="card"><div class="card-content"><h3>חלונות</h3><p>שלושה חלונות גדולים מאחורי שולחן הנשיא, לכיוון המדשאה הדרומית.</p></div></div>
+        <div class="card"><div class="card-content"><h3>שימושים</h3><p>פגישות, נאומים, צילומים רשמיים, חתימות על חוקים וקבלת אורחים.</p></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="furniture" class="tab-content">
+    <section>
+      <h2>פרטי הריהוט המרכזיים בחדר</h2>
+
+      <div class="grid">
+        <div class="card">
+          <img src="images/resolute-desk-front-view.png" alt="שולחן Resolute" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>שולחן Resolute</h3>
+            <p>
+              שולחן הכתיבה המפורסם ביותר של נשיאי ארצות הברית.
+              הוא נבנה מעץ הספינה הבריטית HMS Resolute ונמסר כמתנה לארצות הברית על ידי המלכה ויקטוריה.
+            </p>
+            <p class="credit">קרדיט: שולחן Resolute בחדר הסגלגל, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/oval-office-front-view.png" alt="ריהוט חדר הסגלגל" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>ספות, כורסאות ושולחנות צד</h3>
+            <p>
+              אזור הישיבה בחדר משמש לפגישות רשמיות ופחות רשמיות.
+              הריהוט משתנה בין נשיאים ומשקף את הטעם, המסר והסגנון של כל ממשל.
+            </p>
+            <p class="credit">קרדיט: חדר הסגלגל, צילום רשמי של הבית הלבן / ממשלת ארצות הברית, נחלת הכלל.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="decorations" class="tab-content">
+    <section>
+      <h2>הקישוטים המרכזיים בחדר</h2>
+
+      <div class="grid">
+        <div class="card">
+          <img src="images/oval-office-presidential-seal-carpet.png" alt="שטיח הנשיא" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>השטיח הנשיאותי</h3>
+            <p>השטיח הוא אחד הפריטים הבולטים בחדר. לרוב מופיע עליו סמל נשיא ארצות הברית.</p>
+            <p class="credit">קרדיט: שטיח חדר הסגלגל עם סמל נשיא ארצות הברית, צילום ממשלתי רשמי, נחלת הכלל.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/oval-office-fireplace-front-view.png" alt="האח בחדר הסגלגל" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>האח והדיוקן מעליו</h3>
+            <p>האח הוא מוקד חזותי חשוב בחדר. מעליו מוצגים לעיתים דיוקנאות נשיאותיים או יצירות אמנות.</p>
+            <p class="credit">קרדיט: האח בחדר הסגלגל, צילום רשמי של ממשלת ארצות הברית / הבית הלבן, נחלת הכלל.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/andrew-jackson-portrait-thomas-sully.png" alt="דיוקן אנדרו ג'קסון" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>דיוקן אנדרו ג׳קסון</h3>
+            <p>דיוקנאות של נשיאים קודמים מוצבים לעיתים בחדר כדי לשדר המשכיות וזיקה למסורת נשיאותית.</p>
+            <p class="credit">קרדיט: דיוקן אנדרו ג׳קסון, מאת Thomas Sully, נחלת הכלל.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/the-broncho-buster-remington-met-1895.jpg" alt="The Broncho Buster" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>The Broncho Buster</h3>
+            <p>פסל מאת Frederic Remington משנת 1895, המזוהה עם דימוי המערב האמריקאי.</p>
+            <p class="credit">קרדיט: The Broncho Buster, מאת Frederic Remington, 1895, באדיבות The Metropolitan Museum of Art, CC0.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/winston-churchill-bust-epstein.png" alt="פסל ראש של וינסטון צ'רצ'יל" onclick="openLightbox(this)">
+          <div class="card-content">
+            <h3>פסל ראש של וינסטון צ׳רצ׳יל</h3>
+            <p>פסל ראש של וינסטון צ׳רצ׳יל מסמל את הקשר ההיסטורי בין ארצות הברית לבריטניה.</p>
+            <p class="credit">קרדיט: פסל ראש של וינסטון צ׳רצ׳יל, מאת Jacob Epstein, נחלת הכלל / Wikimedia Commons.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="timeline" class="tab-content">
+    <section>
+      <h2>ציר זמן קצר של חדר הסגלגל</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>תקופת ג׳ורג׳ וושינגטון</h3>
+          <p>וושינגטון לא השתמש בחדר הסגלגל המודרני, אך בתקופתו התגבשה מסורת של חדרים אליפטיים לקבלות פנים רשמיות.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>1909 – ויליאם הווארד טאפט</h3>
+          <p>נבנה חדר הסגלגל הראשון באגף המערבי, כחלק מארגון מחדש של סביבת העבודה הנשיאותית.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>1934 – פרנקלין דלאנו רוזוולט</h3>
+          <p>החדר נבנה במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>המאה ה־20 וה־21</h3>
+          <p>כל נשיא כמעט משנה את צבעי החדר, השטיחים, הווילונות, יצירות האמנות והחפצים האישיים.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="sources" class="tab-content">
+    <section>
+      <h2>מקורות וקרדיטים</h2>
+
+      <ul>
+        <li>הבית הלבן הרשמי – תמונות רשמיות של חדר הסגלגל ונשיאי ארצות הברית.</li>
+        <li>Wikimedia Commons – תמונות נחלת הכלל וקרדיטים היסטוריים.</li>
+        <li>The Metropolitan Museum of Art – תמונות Open Access / CC0.</li>
+        <li>White House Historical Association – מידע היסטורי על החדר והריהוט.</li>
+        <li>National Archives – תיעוד ותמונות ממשלתיות היסטוריות.</li>
+      </ul>
+
+      <h3>קרדיטים לתמונות באתר</h3>
+      <ul>
+        <li>George Washington portrait, Gilbert Stuart, Public Domain.</li>
+        <li>William Howard Taft portrait, Public Domain.</li>
+        <li>Oval Office official photographs, U.S. Government / White House, Public Domain.</li>
+        <li>Resolute Desk, official White House / U.S. Government photograph, Public Domain.</li>
+        <li>Andrew Jackson portrait, Thomas Sully, Public Domain.</li>
+        <li>The Broncho Buster, Frederic Remington, 1895, The Metropolitan Museum of Art, CC0.</li>
+        <li>Winston Churchill bust, Jacob Epstein, Public Domain / Wikimedia Commons.</li>
+      </ul>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  חדר הסגלגל – אתר מידע היסטורי בעברית
+</footer>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span>&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openTab(event, tabId) {
+    const contents = document.querySelectorAll(".tab-content");
+    const buttons = document.querySelectorAll(".tab-button");
+
+    contents.forEach(function(content) {
+      content.classList.remove("active");
+    });
+
+    buttons.forEach(function(button) {
+      button.classList.remove("active");
+    });
+
+    document.getElementById(tabId).classList.add("active");
+    event.currentTarget.classList.add("active");
+  }
+
+  function openLightbox(img) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = img.src;
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
