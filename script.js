@@ -1,10 +1,5 @@
-// =========================================================
-// חדר הסגלגל – סקריפט משותף לכל הדפים
-// =========================================================
-
 document.addEventListener("DOMContentLoaded", function () {
   const current = window.location.pathname.split("/").pop() || "index.html";
-
   document.querySelectorAll("nav a").forEach(function (link) {
     if (link.getAttribute("href") === current) {
       link.classList.add("active");
@@ -15,9 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function openImg(img) {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
-
   if (!lightbox || !lightboxImg) return;
-
   lightbox.style.display = "flex";
   lightboxImg.src = img.src;
   lightboxImg.alt = img.alt || "";
@@ -25,7 +18,5 @@ function openImg(img) {
 
 function closeImg() {
   const lightbox = document.getElementById("lightbox");
-  if (lightbox) {
-    lightbox.style.display = "none";
-  }
+  if (lightbox) lightbox.style.display = "none";
 }
