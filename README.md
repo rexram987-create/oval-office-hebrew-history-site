@@ -1,5 +1,19 @@
-# Oval Office Multipage Site
+# חדר הסגלגל – מוזיאון דיגיטלי
 
-Upload all files to the root of your GitHub repository.
+גרסה סופית מלאה ורב־עמודית.
 
-Keep your existing images inside the /images folder.
+העלה את כל הקבצים לשורש המאגר בגיטהאב.
+השאר את התמונות הקיימות שלך בתוך התיקייה images/.
+
+קבצים:
+- index.html
+- washington.html
+- taft.html
+- architecture.html
+- furniture.html
+- decorations.html
+- timeline.html
+- about.html
+- sources.html
+- styles.css
+- script.js

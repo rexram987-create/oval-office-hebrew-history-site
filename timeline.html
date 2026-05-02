@@ -8,12 +8,14 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-<header class="site-header compact">
+
+<header class="site-header small">
   <div>
     <h1>ציר זמן אינטראקטיבי</h1>
     <p>אירועים מכוננים בתולדות חדר הסגלגל</p>
   </div>
 </header>
+
 <nav>
   <a href="index.html">ראשי</a>
   <a href="washington.html">וושינגטון</a>
@@ -25,21 +27,57 @@
   <a href="about.html">אודות</a>
   <a href="sources.html">מקורות</a>
 </nav>
-<main>
 
-<section><h2>ציר זמן אינטראקטיבי</h2><p>ציר הזמן מציג רגעים מרכזיים בהתפתחות חדר הסגלגל ובאופן שבו הוא הפך לבמה היסטורית. לחצו על שנה כדי לראות הסבר מורחב.</p>
-<div class="timeline-track"><div class="timeline-item active" onclick="showEvent(0)">1909</div><div class="timeline-item" onclick="showEvent(1)">1934</div><div class="timeline-item" onclick="showEvent(2)">1962</div><div class="timeline-item" onclick="showEvent(3)">1969</div><div class="timeline-item" onclick="showEvent(4)">1974</div><div class="timeline-item" onclick="showEvent(5)">2001</div><div class="timeline-item" onclick="showEvent(6)">2011</div></div>
-<div id="timeline-panel" class="timeline-panel"></div></section>
+<main>
+<section>
+  <h2>ציר זמן אינטראקטיבי</h2>
+  <p>
+    ציר הזמן מציג רגעים מרכזיים בהתפתחות חדר הסגלגל ובאופן שבו הוא הפך לבמה
+    היסטורית. לחצו על שנה כדי לראות הסבר מורחב.
+  </p>
+  <div class="timeline-track">
+    <div class="timeline-item active" onclick="showEvent(0)">1909</div>
+    <div class="timeline-item" onclick="showEvent(1)">1934</div>
+    <div class="timeline-item" onclick="showEvent(2)">1962</div>
+    <div class="timeline-item" onclick="showEvent(3)">1969</div>
+    <div class="timeline-item" onclick="showEvent(4)">1974</div>
+    <div class="timeline-item" onclick="showEvent(5)">2001</div>
+    <div class="timeline-item" onclick="showEvent(6)">2011</div>
+  </div>
+  <div id="timeline-panel" class="timeline-panel"></div>
+</section>
+
 <script>
-const timelineEvents=[{year:"1909",title:"בניית חדר הסגלגל הראשון",text:"בתקופת ויליאם הווארד טאפט נבנה חדר הסגלגל הראשון באגף המערבי. זה היה שלב חשוב במעבר של הנשיאות האמריקאית למבנה עבודה מודרני ומסודר יותר."},{year:"1934",title:"המיקום המודרני",text:"בתקופת פרנקלין דלאנו רוזוולט נבנה חדר הסגלגל במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי, עם קשר ברור יותר למדשאה הדרומית ולגן הוורדים."},{year:"1962",title:"משבר הטילים בקובה",text:"בימי ג׳ון פ. קנדי הפך הבית הלבן למוקד קבלת החלטות תחת איום גרעיני. חדר הסגלגל התקבע בתודעה כמקום שבו נשקלות החלטות בעלות משמעות עולמית."},{year:"1969",title:"אפולו 11",text:"לאחר הנחיתה על הירח, הנשיא ריצ׳רד ניקסון שוחח עם האסטרונאוטים. הרגע חיבר בין הנשיאות לבין הישג מדעי וטכנולוגי עצום."},{year:"1974",title:"התפטרות ניקסון",text:"נאום ההתפטרות של ריצ׳רד ניקסון סימן רגע חוקתי דרמטי. החדר הפך לבמה שבה נשיא אמריקאי הכיר בפומבי בסיום כהונתו."},{year:"2001",title:"אחרי פיגועי 11 בספטמבר",text:"לאחר הפיגועים הפך הבית הלבן למרכז של מסרים על ביטחון, מלחמה, אבל ואחדות. כל הופעה נשיאותית מן החדר קיבלה משמעות לאומית ובין־לאומית."},{year:"2011",title:"הודעת אובמה על מבצע בן לאדן",text:"הנשיא ברק אובמה הודיע לציבור על המבצע שבו נהרג אוסאמה בן לאדן. ההודעה הפכה לאחד הרגעים הביטחוניים הבולטים של המאה ה־21."}];
-function showEvent(index){document.querySelectorAll(".timeline-item").forEach(el=>el.classList.remove("active"));document.querySelectorAll(".timeline-item")[index].classList.add("active");const e=timelineEvents[index];document.getElementById("timeline-panel").innerHTML="<h3>"+e.year+" – "+e.title+"</h3><p>"+e.text+"</p>";}showEvent(0);
+const timelineEvents = [
+  {year:"1909", title:"בניית חדר הסגלגל הראשון", text:"בתקופת ויליאם הווארד טאפט נבנה חדר הסגלגל הראשון באגף המערבי. זה היה שלב חשוב במעבר של הנשיאות האמריקאית למבנה עבודה מודרני ומסודר יותר."},
+  {year:"1934", title:"המיקום המודרני", text:"בתקופת פרנקלין דלאנו רוזוולט נבנה חדר הסגלגל במיקומו המוכר כיום, בצד הדרום־מזרחי של האגף המערבי, עם קשר ברור יותר למדשאה הדרומית ולגן הוורדים."},
+  {year:"1962", title:"משבר הטילים בקובה", text:"בימי ג׳ון פ. קנדי הפך הבית הלבן למוקד קבלת החלטות תחת איום גרעיני. חדר הסגלגל התקבע בתודעה כמקום שבו נשקלות החלטות בעלות משמעות עולמית."},
+  {year:"1969", title:"אפולו 11", text:"לאחר הנחיתה על הירח, הנשיא ריצ׳רד ניקסון שוחח עם האסטרונאוטים. הרגע חיבר בין הנשיאות לבין הישג מדעי וטכנולוגי עצום."},
+  {year:"1974", title:"התפטרות ניקסון", text:"נאום ההתפטרות של ריצ׳רד ניקסון סימן רגע חוקתי דרמטי. החדר הפך לבמה שבה נשיא אמריקאי הכיר בפומבי בסיום כהונתו."},
+  {year:"2001", title:"אחרי פיגועי 11 בספטמבר", text:"לאחר הפיגועים הפך הבית הלבן למרכז של מסרים על ביטחון, מלחמה, אבל ואחדות. כל הופעה נשיאותית מן החדר קיבלה משמעות לאומית ובין־לאומית."},
+  {year:"2011", title:"הודעת אובמה על מבצע בן לאדן", text:"הנשיא ברק אובמה הודיע לציבור על המבצע שבו נהרג אוסאמה בן לאדן. ההודעה הפכה לאחד הרגעים הביטחוניים הבולטים של המאה ה־21."}
+];
+
+function showEvent(index){
+  document.querySelectorAll(".timeline-item").forEach(el => el.classList.remove("active"));
+  document.querySelectorAll(".timeline-item")[index].classList.add("active");
+  const e = timelineEvents[index];
+  document.getElementById("timeline-panel").innerHTML =
+    "<h3>" + e.year + " – " + e.title + "</h3><p>" + e.text + "</p>";
+}
+showEvent(0);
 </script>
 
 </main>
-<footer>חדר הסגלגל – מוזיאון דיגיטלי היסטורי</footer>
+
+<footer>
+  חדר הסגלגל – מוזיאון דיגיטלי היסטורי
+</footer>
+
 <div id="lightbox" onclick="closeImg()">
   <span>&times;</span>
   <img id="lightbox-img" src="" alt="">
 </div>
+
 </body>
 </html>
