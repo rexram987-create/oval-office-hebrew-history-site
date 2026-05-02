@@ -1,36 +1,49 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ריהוט חדר הסגלגל</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header class="site-header compact">
+  <div>
+    <h1>ריהוט חדר הסגלגל</h1>
+    <p>שולחן Resolute, אזור הישיבה והריהוט כשפה נשיאותית</p>
+  </div>
+</header>
+<nav>
+  <a href="index.html">ראשי</a>
+  <a href="washington.html">וושינגטון</a>
+  <a href="taft.html">טאפט</a>
+  <a href="architecture.html">אדריכלות</a>
+  <a href="furniture.html">ריהוט</a>
+  <a href="decorations.html">אמנות וקישוטים</a>
+  <a href="timeline.html">ציר זמן</a>
+  <a href="about.html">אודות</a>
+  <a href="sources.html">מקורות</a>
+</nav>
 <main>
 
-<section>
-<h2>הריהוט בחדר הסגלגל</h2>
-
-<p>
-הריהוט בחדר הסגלגל אינו רק פונקציונלי — הוא חלק בלתי נפרד
-מהשפה הסמלית של המוסד הנשיאותי.
-</p>
-</section>
-
-<section>
-<h2>Resolute Desk</h2>
-
-<p>
-שולחן Resolute הוא אחד הפריטים המפורסמים ביותר בבית הלבן.
-הוא נבנה בשנת 1880 מעץ של ספינת HMS Resolute הבריטית.
-</p>
-
-<p>
-השולחן הוענק לנשיא ארצות הברית על ידי המלכה ויקטוריה,
-כסמל לידידות בין המדינות.
-</p>
-
-<div class="block">
-<h3>משמעות סמלית</h3>
-<p>
-השולחן מסמל המשכיות היסטורית, יציבות שלטונית וקשר בין-לאומי.
-כל נשיא היושב מאחוריו ממשיך מסורת ארוכה של הנהגה.
-</p>
-</div>
-
-<img src="images/resolute-desk-front-view.png" onclick="openImg(this)">
-</section>
+<section><h2>הריהוט כשפה נשיאותית</h2>
+<p>הריהוט בחדר הסגלגל אינו רק עניין של נוחות. כל פריט יוצר חלק מן השפה החזותית של הנשיאות. שולחן הנשיא משדר סמכות, אזור הישיבה משדר דיפלומטיה ושיחה, ושולחנות הצד מאפשרים להציג חפצים אישיים וסמלים שמרככים את האווירה הרשמית.</p>
+<p>מכיוון שכל נשיא רשאי לעצב את החדר מחדש במידה מסוימת, הריהוט משתנה בין ממשלים. הבחירה בצבעים, בבדים, בספות ובכורסאות משקפת את הדרך שבה הנשיא רוצה להיראות לציבור ולעולם.</p></section>
+<section><h2>שולחן Resolute</h2><div class="fact-box"><p><strong>שנת יצירה:</strong> 1880</p><p><strong>חומר:</strong> עץ אלון מספינת HMS Resolute</p><p><strong>מידות:</strong> כ־183 × 122 × 84 ס״מ</p><p><strong>משקל:</strong> כ־590 ק״ג</p></div>
+<p>שולחן Resolute הוא אחד החפצים ההיסטוריים החשובים ביותר בבית הלבן. מקורו בספינת המחקר הבריטית HMS Resolute, שננטשה באזור הארקטי ונמצאה על ידי ספינה אמריקאית.</p>
+<p>כאשר פורקה הספינה, נבנה מעציה שולחן שהוענק לנשיא רתרפורד ב. הייז בשנת 1880 על ידי המלכה ויקטוריה. מאז הפך השולחן לסמל של הקשר בין ארצות הברית לבריטניה, אך גם לסמל של המשכיות נשיאותית.</p>
+<img class="full" src="images/resolute-desk-front-view.png" alt="שולחן Resolute" onclick="openImg(this)"></section>
+<section><h2>אזור הישיבה</h2>
+<p>אזור הישיבה כולל בדרך כלל ספות או כורסאות משני צדדים, שולחן קפה נמוך ולעיתים שולחנות צד. זהו אזור של “דיפלומטיה רכה”: הוא מתאים לפגישות עם מנהיגים זרים, שיחות עם יועצים, ראיונות וצילומים.</p>
+<p>אם שולחן Resolute מדגיש סמכות, אזור הישיבה מדגיש שיחה. המעבר בין שני האזורים מאפשר לנשיא לבחור את המסר החזותי: רשמי, אישי, תקיף או מקרב.</p>
+<img class="full" src="images/oval-office-front-view.png" alt="אזור הישיבה בחדר הסגלגל" onclick="openImg(this)"></section>
 
 </main>
+<footer>חדר הסגלגל – מוזיאון דיגיטלי היסטורי</footer>
+<div id="lightbox" onclick="closeImg()">
+  <span>&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+</body>
+</html>
